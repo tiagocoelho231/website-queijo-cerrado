@@ -21,7 +21,8 @@ export default class HeaderHome extends Component {
 			<header className="header-home">
 				<div>
 					<Link to="/" className="header-logo">
-						<img src="" alt="Queijo do Cerrado" />
+						<img src={require('../img/logo.svg')} alt="Logo" />
+						<h1>Queijo do Cerrado</h1>
 					</Link>
 					<nav className={`header-nav${openMenu ? ' active' : ''}`}>
 						<ul>

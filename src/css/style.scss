@@ -53,6 +53,7 @@ input {
 	left: 0;
 	width: 100%;
 	transform: translate3d(0, 0, 0);
+	background-color: #ffe020;
 
 	> div {
 		width: 100%;
@@ -91,9 +92,12 @@ input {
 }
 
 .header-logo {
-	display: block;
+	display: flex;
+	height: 40px;
+	font-size: 14px;
 
-	svg {
+	img {
+		height: 100%;
 		display: block;
 	}
 }
@@ -197,6 +201,11 @@ input {
 
 .home-banner {
 	margin-bottom: 20px;
+	width: 100%;
+
+	img {
+		width: 100%;
+	}
 }
 
 .bloco-texto {
