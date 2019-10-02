@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ra-data-simple-rest": "^2.9.6",
+    "ra-input-rich-text": "^2.9.3",
+    "ra-language-portuguese": "^1.5.1",
     "react": "^16.10.1",
+    "react-admin": "^2.9.6",
     "react-dom": "^16.10.1",
     "react-scripts": "3.1.2"
   },

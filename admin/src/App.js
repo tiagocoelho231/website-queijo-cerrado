@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Admin } from 'react-admin';
+import portugueseMessages from 'ra-language-portuguese';
+import restProvider from 'ra-data-simple-rest';
 
-function App() {
+const messages = { pt: portugueseMessages };
+const i18nProvider = locale => messages[locale];
+
+import { MessageList, MessageEdit, MessageCreate, MessageIcon } from './resources/messages';
+import config from './config';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Admin
+      locale="pt"
+      i18nProvider={i18nProvider}
+      dataProvider={restProvider(config.API)}
+    >
+      <Resource name="messages" list={MessageList} edit={MessageEdit} create={MessageCreate} icon={MessageIcon} />
+    </Admin>
   );
 }
 
