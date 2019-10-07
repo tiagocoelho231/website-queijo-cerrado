@@ -1,7 +1,7 @@
 import React from 'react';
-import { List, Datagrid, Show, DateField, TextField } from 'react-admin';
-import BookIcon from '@material-ui/core/svg-icons/action/book';
-export const MessageIcon = BookIcon;
+import { List, Datagrid, Show, EditButton, DateField, TextField } from 'react-admin';
+// import BookIcon from '@material-ui/core/svg-icons/action/book';
+// export const MessageIcon = BookIcon;
 
 export const MessageList = (props) => (
 	<List {...props}>
