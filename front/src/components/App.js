@@ -1,13 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { HeaderHome } from '.';
-import { Home } from '../pages';
+import { Menu } from '.';
+import { Home, NotFound, Page } from '../pages';
 
 export default () => (
 	<Router>
-		<HeaderHome />
+		<Menu />
 		<Switch>
+			<Route path="/:category/:page" component={Page} />
 			<Route path="/" component={Home} />
+			<Route component={NotFound} />
 		</Switch>
 	</Router>
 );

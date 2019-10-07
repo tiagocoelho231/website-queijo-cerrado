@@ -8,6 +8,4 @@ const pageSchema = mongoose.Schema({
 	timestamps: true
 });
 
-const Page = mongoose.model('Page', pageSchema);
-
-module.exports = Page;
+module.exports = mongoose.model('Page', pageSchema);

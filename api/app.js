@@ -1,11 +1,16 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
-const apiRouter = require('./routers/api');
+const apiRoutes = require('./api-routes');
 
 const app = express();
 
-console.log(Object.keys(app));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-app.use('/api', apiRouter);
+app.use(bodyParser.json());
+
+app.use('/api', apiRoutes);
 
 module.exports = app;

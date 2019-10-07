@@ -1,4 +1,4 @@
 import App from './App';
-import HeaderHome from './HeaderHome';
+import Menu from './Menu';
 
-export { App, HeaderHome };
+export { App, Menu };
