@@ -1,13 +1,13 @@
 import React from 'react';
 import { List } from 'react-admin';
 
-export default ({ children, sort = {}, ...rest }) => (
+export default props => (
 	<List
+		{...props}
 		perPage={25}
-		sort={{ field: sort.field, order: sort.order ? sort.order : 'DESC' }}
-		title={rest.options.label}
-		{...rest}
+		sort={{ field: props.sort.field, order: props.sort.order || 'DESC' }}
+		title={props.options.label}
 	>
-		{children}
+		{props.children}
 	</List>
 );
