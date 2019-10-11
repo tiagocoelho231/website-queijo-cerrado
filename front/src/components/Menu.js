@@ -8,6 +8,7 @@ export default class HeaderHome extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { openMenu: false };
+		this.state = { menuOptions: ['Teste1', 'Teste2', 'Teste3'] };
 		this.toggleMenu = this.toggleMenu.bind(this);
 	}
 
@@ -17,6 +18,13 @@ export default class HeaderHome extends Component {
 
 	render() {
 		const { openMenu } = this.state;
+		const { menuOptions } = this.state;
+
+		const items = this.state.menuOptions.map((item) =>
+			<li>{item}</li>
+		);
+
+
 		return (
 			<header className="header-home">
 				<div>
