@@ -5,101 +5,67 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import './styles.scss';
 
+const menuOptions = [
+  {
+    id: '1',
+    name: 'Opção 1',
+    subMenu: ['Sub Opção 1', 'Sub Opção 2', 'Sub Opção 3', 'Sub Opção 4']
+  }
+  ,
+  {
+    id: '2',
+    name: 'Opção 2',
+    subMenu: ['Sub Opção 1', 'Sub Opção 2']
+  },
+  {
+    id: '3',
+    name: 'Opção 3',
+    subMenu: ['Sub Opção 1', 'Sub Opção 2', 'Sub Opção 3']
+  },
+  {
+    id: '4',
+    name: 'Opção 4',
+    subMenu: ['Sub Opção 1', 'Sub Opção 2', 'Sub Opção 3', 'Sub Opção 4']
+  }
+]
+
 export default class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      openMenu: false,
-      openSubMenu: false,
-      menuActive: '',
-      menuOptions: [
-        {
-          id: '1',
-          name: 'Opção 1',
-          subMenu: [
-            'Sub Opção 1',
-            'Sub Opção 2',
-            'Sub Opção 3',
-            'Sub Opção 4',
-          ]
-        }
-        ,
-        {
-          id: '2',
-          name: 'Opção 2',
-          subMenu: [
-            'Sub Opção 1',
-            'Sub Opção 2',
-          ]
-        },
-        {
-          id: '3',
-          name: 'Opção 3',
-          subMenu: [
-            'Sub Opção 1',
-            'Sub Opção 2',
-            'Sub Opção 3',
-          ]
-        },
-        {
-          id: '4',
-          name: 'Opção 4',
-          subMenu: [
-            'Sub Opção 1',
-            'Sub Opção 2',
-            'Sub Opção 3',
-            'Sub Opção 4',
-          ]
-        }
-      ]
-    };
-
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.toggleMenuClass = this.toggleMenuClass.bind(this);
+    this.state = { openMenu: false, openSubMenu: false, menuActive: '' };
   }
 
-  toggleMenu() {
-    this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
-  }
+  toggleMenu = () => this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
 
-  toggleMenuClass(tab) {
-    if (this.state.menuActive === tab) {
-      this.setState({ menuActive: '' });
-    } else {
-      this.setState({ menuActive: tab });
-    }
-  }
+  toggleMenuClass = tab => this.setState(({ menuActive }) => ({ menuActive: menuActive === tab ? '' : tab }));
+
+  renderDesktopMenuOptions = () => {
+    const { menuActive } = this.state;
+    return menuOptions.map(({ id, name, subMenu }, key) =>
+      <div key={key} className="menuOptions" onMouseEnter={() => this.toggleMenuClass(id)} onMouseLeave={() => this.toggleMenuClass(null)} >
+        <Link to="/">{name}</Link>
+        <div className={menuActive === id ? 'arrowUp' : ''}></div>
+        <ul className={menuActive === id ? 'subOptionsActive' : 'subOptionsInactive'}>
+          {subMenu.map((element, key) => <li key={key}><Link to="/">{element}</Link></li>)}
+        </ul>
+      </div>
+    );
+  };
+
+  renderMobileMenuOptions = () => {
+    const { menuActive } = this.state;
+    return menuOptions.map(({ id, name, subMenu }, key) =>
+      <div key={key}>
+        <p onClick={() => this.toggleMenuClass(id)}>{name}</p>
+        <ul className={menuActive === id ? 'subOptionsActive' : 'subOptionsInactive'}>
+          {subMenu.map((element, key) => <li key={key}><Link to="/">{element}</Link></li>)}
+        </ul>
+      </div>
+    );
+  };
 
   render() {
-    const { menuActive, menuOptions, openMenu } = this.state;
-
-    const items = menuOptions.map((item) =>
-      <div
-        className="menuOptions"
-        onMouseEnter={this.toggleMenuClass.bind(this, item.id)}
-        onMouseLeave={this.toggleMenuClass.bind(this, null)}
-      >
-        <Link to="/">{item.name}</Link>
-        <div className={`${menuActive === item.id ? 'arrowUp' : ''}`}></div>
-        <ul className={`${menuActive === item.id ? 'subOptionsActive' : 'subOptionsInactive'}`}>
-          {item.subMenu.map(element =>
-            <li><Link to="/">{element}</Link></li>
-          )}
-        </ul>
-      </div>
-    );
-
-    const itemsResponsive = menuOptions.map((item) =>
-      <div>
-        <p onClick={this.toggleMenuClass.bind(this, item.id)}>{item.name}</p>
-        <ul className={`${menuActive === item.id ? 'subOptionsActive' : 'subOptionsInactive'}`}>
-          {item.subMenu.map(element =>
-            <li><Link to="/">{element}</Link></li>
-          )}
-        </ul>
-      </div>
-    );
-
+    const { openMenu } = this.state;
     return (
       <header>
         <div>
@@ -110,7 +76,7 @@ export default class Menu extends Component {
           <MediaQuery minWidth={998}>
             <nav>
               <ul>
-                {items}
+                {this.renderDesktopMenuOptions()}
               </ul>
             </nav>
           </MediaQuery>
@@ -119,7 +85,7 @@ export default class Menu extends Component {
           <MediaQuery maxWidth={997}>
             <nav className={`header-nav${openMenu ? ' active' : ''}`}>
               <ul>
-                {itemsResponsive}
+                {this.renderMobileMenuOptions()}
               </ul>
             </nav>
             <button className="header-menu-button" onClick={this.toggleMenu}>

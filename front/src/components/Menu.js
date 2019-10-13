@@ -12,17 +12,17 @@ export default class HeaderHome extends Component {
 		this.toggleMenu = this.toggleMenu.bind(this);
 	}
 
-	toggleMenu() {
+	toggleMenu = () => {
 		this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
 	}
 
 	render() {
 		const { openMenu } = this.state;
-		const { menuOptions } = this.state;
+		// const { menuOptions } = this.state;
 
-		const items = this.state.menuOptions.map((item) =>
-			<li>{item}</li>
-		);
+		// const items = this.state.menuOptions.map(item =>
+		// 	<li>{item}</li>
+		// );
 
 
 		return (

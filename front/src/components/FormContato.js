@@ -49,15 +49,18 @@ export class FormContato extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = ({ messages: { success, error } }) => ({ success, error });
 
+const mapDispatchToProps = dispatch => ({
+	sendMessage: values => dispatch.messages.sendMessage(values)
 })
 
-const mapDispatchToProps = {
-
-}
-
 export default compose(
-	withFormik,
-	connect(mapStateToProps, mapDispatchToProps)
+	connect(mapStateToProps, mapDispatchToProps),
+	withFormik({
+		mapPropsToValues: () => ({ name: '', email: '', phone: '', message: '' }),
+		handleSubmit: (values, { props: { sendMessage } }) => {
+			sendMessage(values);
+		},
+	})
 )(FormContato)

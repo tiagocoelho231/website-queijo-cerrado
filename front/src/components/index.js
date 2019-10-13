@@ -1,5 +1,5 @@
-import App from './App';
 import CustomFormField from './CustomFormField';
+import FormContato from './FormContato';
 import Menu from './Menu';
 
-export { App, CustomFormField, Menu };
+export { CustomFormField, FormContato, Menu };

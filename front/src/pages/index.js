@@ -1,5 +1,6 @@
+import Contato from './Contato';
 import Home from './Home';
 import NotFound from './NotFound';
 import Page from './Page';
 
-export { Home, NotFound, Page };
+export { Contato, Home, NotFound, Page };
