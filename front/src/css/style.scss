@@ -53,11 +53,6 @@ main {
 	padding-top: 80px;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
-
-* {
-  font-family: "Roboto", sans-serif;
-}
 
 .menu-home {
   width: 100%;
@@ -92,6 +87,7 @@ main {
         display: flex;
         justify-content: space-around;
         list-style: none;
+        font-size: 20px;
       }
       li {
         a {
@@ -299,4 +295,66 @@ main {
 	@media screen and (max-width: 997px) {
 		padding: 0 20px;
 	}
+}
+
+.slider {
+  top: 80px;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 400px;
+  white-space: nowrap;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  z-index: 999;
+  color: #fff;
+}
+
+.right {
+  right: 25px;
+}
+
+.left {
+  left: 25px;
+}
+
+.right-arrow{
+  border: solid black;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left-arrow {
+  border: solid black;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }

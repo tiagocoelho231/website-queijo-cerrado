@@ -58,7 +58,7 @@ export default class Menu extends Component {
         <div className="arrowUp-space"></div>
         <div className={menuActive === id ? 'arrowUp' : ''}></div>
         <ul className={menuActive === id ? 'subOptionsActive' : 'subOptionsInactive'}>
-          {subMenu.map((element, key) => <li key={key}><Link to={`/${element.url}`}>{element.name}</Link></li>)}
+          {subMenu.map((element, key) => <li key={key}><Link to={`/${name}/${element.url}`}>{element.name}</Link></li>)}
         </ul>
       </div>
     );
