@@ -3,8 +3,9 @@ const Message = require('../../models/message.model');
 exports.index = async (req, res) => {
   const { filter, limit } = req.body;
   try {
-    const messages = await Message.find({ filter }, null, { limit });
-    return res.json({ total: messages.length, limit, data: messages });
+    const data = await Message.find({ filter }, 'name email phone createdAt', { limit });
+    const total = await Message.countDocuments();
+    return res.json({ total, data });
   } catch (err) {
     res.status(400).send(err);
   }

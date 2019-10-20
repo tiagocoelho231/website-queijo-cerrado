@@ -17,6 +17,8 @@ const App = () => {
       dataProvider={restProvider(config.API)}
     >
       <Resource {...resources.messages} />
+      <Resource {...resources.categories} />
+      <Resource {...resources.pages} />
     </Admin>
   );
 }

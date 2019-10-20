@@ -73,7 +73,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
 			}
 			case UPDATE:
 				url = `${apiUrl}/${resource}/${params.id}`;
-				options.method = 'PUT';
+				options.method = 'PATCH';
 				options.body = JSON.stringify(params.data);
 				break;
 			case CREATE:
@@ -102,20 +102,18 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
 		const { json } = response;
 		switch (type) {
 			case GET_LIST:
+			case GET_MANY:
 			case GET_MANY_REFERENCE:
 				return {
 					data: json.data.map(item => ({ ...item, id: item._id })),
-					total: parseInt(json.total, 10),
+					limit: parseInt(json.limit),
+					total: parseInt(json.total),
 				};
-			case GET_ONE:
-				return { data: { ...json, id: json._id } }
-			case CREATE:
-				return { data: { ...params.data, id: json._id } };
 			case DELETE_MANY: {
-				return { data: json || [] };
+				return { data: json.map(res => ({ ...res, id: res._id })) || [] };
 			}
 			default:
-				return { data: json };
+				return { data: { ...json, id: json._id } };
 		}
 	};
 
