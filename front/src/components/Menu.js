@@ -21,13 +21,13 @@ export default class Menu extends Component {
       .then(({ data }) => {
         let menuOptions = data.reduce((obj, page) => {
           if (obj[page.category])
-            return { ...obj, [page.category]: { submenu: [...obj[page.category.submenu], page] } };
-          return { ...obj, [page.category]: { submenu: [page] } };
+            return { ...obj, [page.category]: [...obj[page.category], page] };
+          return { ...obj, [page.category]: [page] };
         }, {});
-        menuOptions = Object.entries(menuOptions).reduce((obj, [k, v]) => {
+        menuOptions = Object.entries(menuOptions).reduce((array, [k, v]) => {
           const category = this.categories.find(category => category._id === k);
-          return { ...obj, [category.name]: v };
-        }, {});
+          return [...array, { ...category, subMenu: v }];
+        }, []);
         this.setState({ menuOptions })
       })
       .catch(({ error }) => console.log('error', error));
@@ -40,16 +40,16 @@ export default class Menu extends Component {
 
   renderDesktopMenuOptions = () => {
     const { menuActive, menuOptions } = this.state;
-    return Object.entries(menuOptions).map(([name, content], key) =>
-      <div key={key} className="menuOptions" onMouseEnter={() => this.toggleMenuClass(id)} onMouseLeave={() => this.toggleMenuClass(null)} >
-        <Link to="/">{name}</Link>
+    return menuOptions.map(({ url, subMenu, name }, key) => (
+      <div key={key} className="menuOptions" onMouseEnter={() => this.toggleMenuClass(name)} onMouseLeave={() => this.toggleMenuClass(null)} >
+        <button>{name}</button>
         <div className="arrowUp-space"></div>
-        <div className={menuActive === id ? 'arrowUp' : ''}></div>
-        <ul className={menuActive === id ? 'subOptionsActive' : 'subOptionsInactive'}>
-          {subMenu.map((element, key) => <li key={key}><Link to={`/${name}/${element.url}`}>{element.name}</Link></li>)}
+        <div className={menuActive === name ? 'arrowUp' : ''}></div>
+        <ul className={menuActive === name ? 'subOptionsActive' : 'subOptionsInactive'}>
+          {subMenu.map(page => <li key={page}><Link to={`/${url}/${page.url}`}>{page.title}</Link></li>)}
         </ul>
       </div>
-    );
+    ));
   };
 
   renderMobileMenuOptions = () => {
@@ -66,7 +66,6 @@ export default class Menu extends Component {
 
   render() {
     const { openMenu, menuOptions } = this.state;
-    console.log('menuOptions', menuOptions);
     return (
       <header className="menu">
         <div>
