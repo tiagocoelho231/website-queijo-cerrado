@@ -3,16 +3,18 @@ import axios from '../lib/axios'
 export default {
   state: { isLoading: false, success: false, error: null },
   reducers: {
-    updateState: (state, payload) => ({ ...state, ...payload })
+    beforeSend: () => ({ isLoading: true, success: false, error: null }),
+    onSuccess: state => ({ ...state, isLoading: false, success: true }),
+    onError: (state, error) => ({ ...state, isLoading: false, error })
   },
   effects: dispatch => ({
-    sendMessage: async (payload, state) => {
-      dispatch.messages.updateState({ isLoading: true });
+    sendMessage: async data => {
+      dispatch.messages.beforeSend();
       try {
-        await axios.post('/messages', payload);
-        dispatch.messages.updateState({ isLoading: false, success: true });
+        await axios.post('/messages', data);
+        dispatch.messages.onSuccess();
       } catch (error) {
-        dispatch.messages.updateState({ isLoading: false, error });
+        dispatch.messages.onError(error);
       }
     }
   }),
