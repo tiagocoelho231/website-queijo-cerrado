@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+@import './quill.css';
 
 $brownColor: #67350b;
 $orangeColor: #ef7a01;
@@ -13,7 +14,7 @@ body {
   padding: 0;
   font-family: Roboto, sans-serif;
 	background-color: #FFF;
-	color: $brownColor;
+	color: #000;
 }
 
 h1,
@@ -27,8 +28,11 @@ p {
 }
 
 button {
-	background-color: transparent;
-	border: 2px solid $brownColor;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: none;
 }
 
 ul {
@@ -53,7 +57,27 @@ input {
 }
 
 main {
-	padding-top: 80px;
+  padding-top: 80px;
+  
+  h1 {
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 55px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 25px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
 }
 
 
@@ -67,30 +91,28 @@ main {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
 
   > div {
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
+
   @media screen and (min-width: 998px) {
     padding: 40px;
     height: 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     nav {
       display: flex;
-      width: 50%;
-      ul {
+      width: 100%;
+      max-width: 700px;
+      > ul {
         width: 100%;
         display: flex;
         justify-content: space-between;
         list-style: none;
         font-size: 20px;
-      }
-      li {
-        a {
-          font-size: 18px;
-        }
       }
     }
     > div {
@@ -124,33 +146,6 @@ main {
   }
 }
 
-.menuOptions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.arrowUp {
-  top: 60px;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #d3d3d362;
-}
-.arrowUp-space{
-  position: absolute;
-  margin-top: 15px;
-  height: 30px;
-  width: 50px;
-  background: transparent;
-}
-
-@media screen and (min-width: 998px) {
-}
-
 .header-menu-button {
   display: flex;
   align-items: center;
@@ -164,51 +159,62 @@ main {
   }
 }
 
-.header-nav {
+// .header-nav {
+//   display: flex;
+//   height: 500px;
+//   position: absolute;
+//   top: 100%;
+//   right: 0;
+//   transition: transform 0.3s;
+//   border-left: 2px solid $brownColor;
+//   border-bottom: 2px solid $brownColor;
+//   background-color: $orangeColor;
+//   width: 200px;
+
+//   &:not(.active) {
+//     transform: translateX(100%);
+//   }
+
+//   &.active {
+//     transform: translateX(0);
+//   }
+
+//   > ul {
+//     width: 100%;
+//     list-style: none;
+//     display: flex;
+//     flex-direction: column;
+//   }
+// }
+
+.menuOptions {
   display: flex;
-  height: 500px;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  transition: transform 0.3s;
-  border-left: 2px solid $brownColor;
-  border-bottom: 2px solid $brownColor;
-  background-color: $orangeColor;
-  width: 200px;
+  align-items: center;
+  position: relative;
 
-  ul {
-    width: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    div {
-      p {
-        padding: 10px;
-      }
-    }
-  }
-
-  &:not(.active) {
-    transform: translateX(100%);
-  }
-
-  &.active {
-    transform: translateX(0);
+  button {
+    font-size: 18px;
+    cursor: pointer;
   }
 }
 
-.subOptionsActive {
+.subOptions {
+  &:not(.active) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   @media screen and (max-width: 997px) {
     li {
       padding: 0 10px;
       margin: 7px 0;
-      :active {
-        background: rgb(238, 238, 238);
-        color: $orangeColor;
+      &:active {
+        background: $orangeColor;
+        color: #FFF;
         transition: 0.2s;
       }
     }
-    a {
+    button {
       width: 100%;
       padding: 7px;
       &:not(:last-of-type) {
@@ -218,15 +224,32 @@ main {
   }
 
   @media screen and (min-width: 998px) {
-    box-shadow: 0 0 20px #0000002c;
-    display: flex !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
     flex-direction: column;
     position: absolute;
-    background: $orangeColor;
-    color: #fff;
+    background: #FFF;
+    color: $orangeColor;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    opacity: 1;
+    transition: opacity 0.3s;
 
-    top: 70px;
-    width: 150px !important;
+    &::before {
+      content: '';
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid #FFF;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      z-index: 1;
+    }
 
     > li {
       display: flex;
@@ -235,15 +258,7 @@ main {
       padding: 10px 0;
       cursor: pointer;
     }
-    :hover {
-      background: rgb(238, 238, 238);
-      color: $orangeColor;
-      transition: 0.2s;
-    }
   }
-}
-.subOptionsInactive {
-  display: none !important;
 }
 
 
@@ -305,7 +320,6 @@ main {
 }
 
 .slider {
-  top: 80px;
   position: relative;
   width: 100%;
   margin: 0 auto;
@@ -336,7 +350,7 @@ main {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  z-index: 999;
+  z-index: 1;
   color: #fff;
 }
 
@@ -364,4 +378,27 @@ main {
   padding: 4px;
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+}
+
+.page-content {
+  max-width: $gridWidth;
+  padding: 120px 40px;
+  margin: 0 auto;
+}
+
+.custom-page-content {
+  p {
+    img {
+      max-width: 100%;
+      display: block;
+    }
+  }
+}
+
+//HOVERS
+
+.subOptionsActive:hover {
+  background: $orangeColor;
+  color: #FFF;
+  transition: 0.2s;
 }

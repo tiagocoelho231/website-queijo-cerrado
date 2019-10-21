@@ -1,71 +1,55 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
+import { connect } from 'react-redux';
 import MenuIcon from '@material-ui/icons/Menu';
 import { InlineSVG } from '.';
-import axios from '../lib/axios';
 
-export default class Menu extends Component {
+class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = { openMenu: false, openSubMenu: false, menuActive: '', menuOptions: [] };
+    this.state = { openMenu: false, openSubMenu: false, menuActive: '' };
     this.categories = [];
   }
 
   componentDidMount() {
-    axios.get('/categories')
-      .then(({ data }) => this.categories = data)
-      .catch(({ error }) => console.log(error));
-
-    axios.get('/pages')
-      .then(({ data }) => {
-        let menuOptions = data.reduce((obj, page) => {
-          if (obj[page.category])
-            return { ...obj, [page.category]: [...obj[page.category], page] };
-          return { ...obj, [page.category]: [page] };
-        }, {});
-        menuOptions = Object.entries(menuOptions).reduce((array, [k, v]) => {
-          const category = this.categories.find(category => category._id === k);
-          return [...array, { ...category, subMenu: v }];
-        }, []);
-        this.setState({ menuOptions })
-      })
-      .catch(({ error }) => console.log('error', error));
+    this.props.fetch();
   }
-
 
   toggleMenu = () => this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
 
   toggleMenuClass = tab => this.setState(({ menuActive }) => ({ menuActive: menuActive === tab ? '' : tab }));
 
   renderDesktopMenuOptions = () => {
-    const { menuActive, menuOptions } = this.state;
-    return menuOptions.map(({ url, subMenu, name }, key) => (
-      <div key={key} className="menuOptions" onMouseEnter={() => this.toggleMenuClass(name)} onMouseLeave={() => this.toggleMenuClass(null)} >
+    const { menuActive } = this.state;
+    const { pages } = this.props;
+    return pages.map(({ url, subMenu, name }, key) => (
+      <li key={key} className="menuOptions" onMouseEnter={() => this.toggleMenuClass(name)} onMouseLeave={() => this.toggleMenuClass(null)} >
         <button>{name}</button>
-        <div className="arrowUp-space"></div>
-        <div className={menuActive === name ? 'arrowUp' : ''}></div>
-        <ul className={menuActive === name ? 'subOptionsActive' : 'subOptionsInactive'}>
-          {subMenu.map(page => <li key={page}><Link to={`/${url}/${page.url}`}>{page.title}</Link></li>)}
+        <ul className={`subOptions${menuActive === name ? ' active' : ''}`}>
+          {subMenu.map(page => <li key={page}><Link to={`/${url}/${page.url}`}>{page.title}</Link></li >)
+          }
         </ul>
-      </div>
+      </li >
     ));
   };
 
   renderMobileMenuOptions = () => {
-    const { menuActive, menuOptions } = this.state;
-    return menuOptions.map(({ id, name, subMenu }, key) =>
-      <div key={key}>
+    const { menuActive } = this.state;
+    const { pages } = this.props;
+    return pages.map(({ id, name, subMenu }, key) =>
+      <li key={key}>
         <p onClick={() => this.toggleMenuClass(id)}>{name}</p>
         <ul className={menuActive === id ? 'subOptionsActive' : 'subOptionsInactive'}>
           {subMenu.map((element, key) => <li key={key}><Link onClick={() => { this.toggleMenu(); this.toggleMenuClass('') }} to={`/${element.url}`}>{element.name}</Link></li>)}
         </ul>
-      </div>
+      </li>
     );
   };
 
   render() {
-    const { openMenu, menuOptions } = this.state;
+    const { openMenu } = this.state;
+    const { pages } = this.props;
     return (
       <header className="menu">
         <div>
@@ -73,7 +57,7 @@ export default class Menu extends Component {
             <InlineSVG src={require('../img/logo.svg')} alt="Logo" />
             <h1>Queijo Raiz do Cerrado</h1>
           </Link>
-          {menuOptions.length > 0 && (
+          {pages.length > 0 && (
             <>
               <MediaQuery minWidth={998}>
                 <nav>
@@ -100,5 +84,12 @@ export default class Menu extends Component {
       </header>
     )
   }
-
 }
+
+const mapStateToProps = ({ pages: { data: pages } }) => ({ pages })
+
+const mapDispatchToProps = dispatch => ({
+  fetch: () => dispatch.pages.fetch()
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)
