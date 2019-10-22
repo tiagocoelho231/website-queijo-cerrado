@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormContato } from '../components';
+import { FormContato, Mapa } from '../components';
 
 export default class Contato extends Component {
   render() {
@@ -7,6 +7,7 @@ export default class Contato extends Component {
       <main className="contato-content">
         <h2>Contato</h2>
         <FormContato />
+        <Mapa />
       </main>
     )
   }

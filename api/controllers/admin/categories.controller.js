@@ -33,12 +33,11 @@ exports.create = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
+	const expectedOptions = ['name', 'url'];
 	const { id } = req.params;
-	const { name, url } = req.body;
 	try {
 		const category = await Category.findById(id);
-		category.name = name || category.name;
-		category.url = url || category.url;
+		expectedOptions.forEach(option => category[option] = req.body[option] || category[option]);
 		const updatedCategory = await category.save();
 		return res.json(updatedCategory);
 	} catch (err) {

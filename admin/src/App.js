@@ -17,6 +17,7 @@ const App = () => {
       dataProvider={restProvider(config.API)}
     >
       <Resource {...resources.messages} />
+      <Resource {...resources.markers} />
       <Resource {...resources.categories} />
       <Resource {...resources.pages} />
     </Admin>

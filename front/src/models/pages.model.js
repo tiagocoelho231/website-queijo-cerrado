@@ -12,8 +12,6 @@ export default {
       dispatch.pages.beforeFetch();
       try {
         const [{ data: categories }, { data: pages }] = await Promise.all([axios.get('/categories'), axios.get('/pages')]);
-        console.log('categories', categories)
-        console.log('pages', pages)
         let data = pages.reduce((obj, page) => {
           if (obj[page.category])
             return { ...obj, [page.category]: [...obj[page.category], page] };

@@ -1,7 +1,7 @@
 const Router = require('express').Router;
 const router = Router();
 
-const { categoriesController, messagesController, pagesController } = require('./controllers/admin');
+const { categoriesController, markersController, messagesController, pagesController } = require('./controllers/admin');
 
 router.route('/categories')
   .get(categoriesController.index)
@@ -29,5 +29,15 @@ router.route('/messages')
 router.route('/messages/:id')
   .get(messagesController.view)
   .delete(messagesController.remove);
+
+router.route('/markers')
+  .get(markersController.index)
+  .post(markersController.create);
+
+router.route('/markers/:id')
+  .get(markersController.view)
+  .patch(markersController.update)
+  .put(markersController.update)
+  .delete(markersController.remove);
 
 module.exports = router;

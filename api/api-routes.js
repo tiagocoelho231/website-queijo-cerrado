@@ -1,7 +1,7 @@
 const Router = require('express').Router;
 const router = Router();
 
-const { categoriesController, messagesController, pagesController } = require('./controllers/api');
+const { categoriesController, markersController, messagesController, pagesController } = require('./controllers/api');
 
 router.route('/categories')
   .get(categoriesController.index);
@@ -15,5 +15,7 @@ router.route('/pages')
 router.route('/pages/:id')
   .get(pagesController.view);
 
+router.route('/markers')
+  .get(markersController.index);
 
 module.exports = router;

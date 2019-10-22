@@ -8,7 +8,7 @@ export default () => (
 		<Menu />
 		<Switch>
 			<Route exact path="/" component={Home} />
-			<Route path="/sobre/contato" component={Contato} />
+			<Route path="/contato" component={Contato} />
 			<Route path="/:category/:page" component={Page} />
 			<Route component={NotFound} />
 		</Switch>
