@@ -10,6 +10,12 @@ const pontoCentralizacao = {
   lng: -122.176
 }
 
+const mapStyles = {
+  width: '70%',
+  left: 'auto',
+  right: 'auto',
+};
+
 class Mapa extends Component {
   componentDidMount() {
     this.props.fetch();
@@ -23,6 +29,7 @@ class Mapa extends Component {
         google={this.props.google}
         zoom={8}
         initialCenter={pontoCentralizacao}
+        style={mapStyles}
       >
         {markers.map(({ name, latitude, longitude }) => (
           <Marker
