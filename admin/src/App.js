@@ -20,6 +20,7 @@ const App = () => {
       <Resource {...resources.markers} />
       <Resource {...resources.categories} />
       <Resource {...resources.pages} />
+      <Resource {...resources.articles} />
     </Admin>
   );
 }

@@ -1,7 +1,30 @@
 const Router = require('express').Router;
 const router = Router();
 
-const { categoriesController, markersController, messagesController, pagesController } = require('./controllers/admin');
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+
+const upload = multer({ storage })
+
+const { articlesController, categoriesController, markersController, messagesController, pagesController } = require('./controllers/admin');
+
+router.route('/articles')
+  .get(articlesController.index)
+  .post(upload.single('image'), articlesController.create);
+
+router.route('/articles/:id')
+  .get(articlesController.view)
+  .patch(articlesController.update)
+  .put(articlesController.update)
+  .delete(articlesController.remove);
 
 router.route('/categories')
   .get(categoriesController.index)
