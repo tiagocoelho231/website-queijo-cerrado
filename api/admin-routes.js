@@ -22,8 +22,8 @@ router.route('/articles')
 
 router.route('/articles/:id')
   .get(articlesController.view)
-  .patch(articlesController.update)
-  .put(articlesController.update)
+  .patch(upload.single('image'), articlesController.update)
+  .put(upload.single('image'), articlesController.update)
   .delete(articlesController.remove);
 
 router.route('/categories')
