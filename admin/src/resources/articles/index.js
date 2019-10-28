@@ -1,4 +1,4 @@
-import icon from '@material-ui/icons/Email';
+import icon from '@material-ui/icons/Announcement';
 import create from './create';
 import edit from './edit';
 import list from './list';

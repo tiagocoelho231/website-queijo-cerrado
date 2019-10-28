@@ -10,12 +10,12 @@ export default {
   },
   effects: dispatch => ({
     fetch: async (url) => {
-      dispatch.page.beforeFetch();
+      dispatch.article.beforeFetch();
       try {
-        const { data } = await axios.get(`/pages/${url}`);
-        dispatch.page.onSuccess(data);
+        const { data } = await axios.get(`/articles/${url}`);
+        dispatch.article.onSuccess(data);
       } catch (error) {
-        dispatch.page.onError(error);
+        dispatch.article.onError(error);
       }
     }
   }),

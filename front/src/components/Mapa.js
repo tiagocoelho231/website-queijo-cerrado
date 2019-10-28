@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 const apiKey = 'AIzaSyBh-EzKBwTiGYVRoDQqXQGBNgf6q4HD9Pk';
 
 const pontoCentralizacao = {
-  lat: 47.444,
-  lng: -122.176
+  lat: -18.5872541,
+  lng: -46.5147373
 }
 
 const mapStyles = {
@@ -23,7 +23,6 @@ class Mapa extends Component {
 
   render() {
     const { markers } = this.props;
-    console.log('markers', markers);
     return (
       <Map
         google={this.props.google}

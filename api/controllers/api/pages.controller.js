@@ -10,9 +10,9 @@ exports.index = async (req, res) => {
 }
 
 exports.view = async (req, res) => {
-	const { id } = req.params;
+	const { page: url } = req.params;
 	try {
-		const page = await Page.findById(id);
+		const page = await Page.findOne({ url });
 		return res.json(page);
 	} catch (error) {
 		res.status(400).send(error);

@@ -10,9 +10,9 @@ exports.index = async (req, res) => {
 }
 
 exports.view = async (req, res) => {
-	const { id } = req.params;
+	const { article: url } = req.params;
 	try {
-		const article = await Article.findById(id);
+		const article = await Article.findOne({ url });
 		return res.json(article);
 	} catch (error) {
 		res.status(400).send(error);

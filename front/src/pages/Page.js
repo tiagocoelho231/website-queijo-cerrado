@@ -3,28 +3,8 @@ import { connect } from 'react-redux';
 
 class Page extends Component {
   componentDidMount() {
-    const { pages } = this.props;
-    if (pages.length) {
-      const { category, page } = this.props.match.params;
-      const id = pages.find(c => c.url === category).subMenu.find(p => p.url === page)._id;
-      this.props.fetch(id);
-    }
+    this.props.fetch(this.props.match.params.page);
   }
-
-  componentDidUpdate(prevProps) {
-    const { page, pages } = this.props;
-    if (!page && prevProps.pages !== pages && pages.length) {
-      const { category, page } = this.props.match.params;
-      const id = pages.find(c => c.url === category).subMenu.find(p => p.url === page)._id;
-      this.props.fetch(id);
-    }
-  }
-
-  componentWillUnmount() {
-
-  }
-
-
 
   render() {
     const { page } = this.props;
@@ -41,12 +21,10 @@ class Page extends Component {
   }
 }
 
-const mapStateToProps = ({ pages: { data: pages }, page: { data: page } }) => ({ pages, page });
+const mapStateToProps = ({ page: { data: page } }) => ({ page });
 
 const mapDispatchToProps = dispatch => ({
-  clear: () => dispatch.page.clear(),
-  fetch: page => dispatch.page.fetch(page),
-  fetchPages: () => dispatch.pages.fetch()
+  fetch: url => dispatch.page.fetch(url)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page);
