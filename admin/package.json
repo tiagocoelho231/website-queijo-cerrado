@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^4.4.3",
+    "axios": "^0.19.0",
     "query-string": "^6.8.3",
     "ra-data-simple-rest": "^2.9.7",
     "ra-input-rich-text": "^2.9.3",
