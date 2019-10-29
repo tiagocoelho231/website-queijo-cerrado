@@ -27,10 +27,9 @@ class Menu extends Component {
       <li key={key} className="menuOptions" onMouseEnter={() => this.toggleMenuClass(name)} onMouseLeave={() => this.toggleMenuClass(null)} >
         <button>{name}</button>
         <ul className={`subOptions${menuActive === name ? ' active' : ''}`}>
-          {subMenu.map(page => <li key={page}><Link to={`/${url}/${page.url}`}>{page.title}</Link></li >)
-          }
+          {subMenu.map(page => <li key={page}><Link to={`/${url}/${page.url}`}>{page.title}</Link></li >)}
         </ul>
-      </li >
+      </li>
     ));
   };
 
@@ -57,29 +56,28 @@ class Menu extends Component {
             <InlineSVG src={require('../img/logo.svg')} alt="Logo" />
             <h1>Queijo Raiz do Cerrado</h1>
           </Link>
-          {pages.length > 0 && (
-            <>
-              <MediaQuery minWidth={998}>
-                <nav>
-                  <ul>
-                    {this.renderDesktopMenuOptions()}
-                  </ul>
-                </nav>
-              </MediaQuery>
+          <MediaQuery minWidth={998}>
+            <nav>
+              <ul>
+                {pages.length > 0 && this.renderDesktopMenuOptions()}
+                <li className="menuOptions">
+                  <Link to="/noticias">Notícias</Link>
+                </li>
+              </ul>
+            </nav>
+          </MediaQuery>
 
 
-              <MediaQuery maxWidth={997}>
-                <nav className={`header-nav${openMenu ? ' active' : ''}`}>
-                  <ul>
-                    {this.renderMobileMenuOptions()}
-                  </ul>
-                </nav>
-                <button className="header-menu-button" onClick={this.toggleMenu}>
-                  <MenuIcon />
-                </button>
-              </MediaQuery>
-            </>
-          )}
+          <MediaQuery maxWidth={997}>
+            <nav className={`header-nav${openMenu ? ' active' : ''}`}>
+              <ul>
+                {pages.length > 0 && this.renderMobileMenuOptions()}
+              </ul>
+            </nav>
+            <button className="header-menu-button" onClick={this.toggleMenu}>
+              <MenuIcon />
+            </button>
+          </MediaQuery>
         </div>
       </header>
     )

@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import MaskedInput from 'react-text-mask';
 import { CustomFormField } from '.';
 
-export class FormContato extends Component {
+class FormContato extends Component {
 	componentDidUpdate(prevProps) {
 		const { resetForm, success } = this.props;
 		if (success && prevProps.success !== success)

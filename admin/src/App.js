@@ -15,7 +15,7 @@ const App = () => {
     <Admin
       locale="pt"
       i18nProvider={i18nProvider}
-      dataProvider={addUploadCapabilities(restProvider(config.API))}
+      dataProvider={addUploadCapabilities(restProvider(`${config.API}/admin`))}
     >
       <Resource {...resources.messages} />
       <Resource {...resources.markers} />

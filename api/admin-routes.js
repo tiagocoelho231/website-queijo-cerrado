@@ -15,7 +15,7 @@ const upload = multer({ storage });
 
 const { articlesController, categoriesController, markersController, messagesController, pagesController, uploadsController } = require('./controllers/admin');
 
-router.route('uploads/:resource')
+router.route('/uploads/:resource')
   .post(upload.single('file'), uploadsController.create);
 
 router.route('/articles')

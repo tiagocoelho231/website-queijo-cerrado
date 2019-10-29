@@ -4,7 +4,7 @@ import config from './config';
 const uploadImage = async (file, resource) => {
 	const body = new FormData();
 	body.append('file', file.rawFile);
-	const res = await axios.post(`${config.API}/uploads/${resource}`, body);
+	const res = await axios.post(`${config.API}/admin/uploads/${resource}`, body);
 	return res.data;
 };
 

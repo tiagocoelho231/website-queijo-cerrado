@@ -59,7 +59,7 @@ input {
 }
 
 main {
-  padding-top: 80px;
+  padding-top: 120px;
   
   h1 {
     font-size: 70px;
@@ -282,24 +282,41 @@ main {
 }
 
 .bloco-texto {
+  margin: 0 auto 80px;
+
   h1,h2,h3,h4,h5,h6{
     text-align: center;
     margin-bottom: 15px;
   }
   p{
-    line-height: 1.5em;
+    line-height: 1.5;
     text-indent: 3em;
-    text-align: justify;
     font-size: 22px;
   }
 
 	@media screen and (min-width: 998px) {
-		padding: 10px 80px;
+    max-width: $gridWidth;
+    padding: 0 40px;
 	}
 
 	@media screen and (max-width: 997px) {
-		padding: 10px 10px;
+    padding: 0 20px;
 	}
+}
+
+.map-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  position: relative;
+}
+
+.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .page-content {
@@ -317,19 +334,10 @@ main {
   }
 }
 
-//HOVERS
-
-.subOptionsActive:hover {
-  background: $orangeColor;
-  color: #FFF;
-  transition: 0.2s;
-}
-
 .slider{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
   >div{
     width: 100%;
     margin-bottom: 30px;
@@ -351,11 +359,10 @@ main {
   background:#999;
 }
 
-.mapa{
-  >div{
-    >div{
-      display: flex;
-      justify-content: center;
-    }
-  }
+//HOVERS
+
+.subOptionsActive:hover {
+  background: $orangeColor;
+  color: #FFF;
+  transition: 0.2s;
 }

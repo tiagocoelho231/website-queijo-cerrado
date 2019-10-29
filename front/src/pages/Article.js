@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Article extends Component {
-  requested = false;
-
   componentDidMount() {
-    this.props.fetch(this.props.params.match.article)
+    this.props.fetch(this.props.match.params.article)
   }
 
   render() {

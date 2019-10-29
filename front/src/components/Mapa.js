@@ -10,12 +10,6 @@ const pontoCentralizacao = {
   lng: -46.5147373
 }
 
-const mapStyles = {
-  width: '70%',
-  left: 'auto',
-  right: 'auto',
-};
-
 class Mapa extends Component {
   componentDidMount() {
     this.props.fetch();
@@ -24,20 +18,22 @@ class Mapa extends Component {
   render() {
     const { markers } = this.props;
     return (
-      <Map
-        google={this.props.google}
-        zoom={8}
-        initialCenter={pontoCentralizacao}
-        style={mapStyles}
-      >
-        {markers.map(({ name, latitude, longitude }) => (
-          <Marker
-            position={{ lat: latitude, lng: longitude }}
-            name={name}
-            icon={Marker.icon}
-          />
-        ))}
-      </Map>
+      <section className="map-wrapper">
+        <Map
+          className="map"
+          google={this.props.google}
+          zoom={8}
+          initialCenter={pontoCentralizacao}
+        >
+          {markers.map(({ name, latitude, longitude }) => (
+            <Marker
+              position={{ lat: latitude, lng: longitude }}
+              name={name}
+              icon={Marker.icon}
+            />
+          ))}
+        </Map>
+      </section>
     );
   }
 }

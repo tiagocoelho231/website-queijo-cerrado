@@ -5,7 +5,7 @@ export default class Contato extends Component {
   render() {
     return (
       <main className="contato-content">
-        <h2>Contato</h2>
+        <h1>Contato</h1>
         <FormContato />
         <Mapa />
       </main>

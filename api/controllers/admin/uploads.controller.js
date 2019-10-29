@@ -6,7 +6,6 @@ module.exports.create = (req, res) => {
 		mimetype: file.mimetype,
 		size: file.size,
 		url,
-		fullUrl: `${protocol}://${req.get('host')}${url}`
 	};
 	return res.send(data);
 };
