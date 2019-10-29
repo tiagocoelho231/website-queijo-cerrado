@@ -1,29 +1,31 @@
 const Router = require('express').Router;
 const router = Router();
-
-const multer = require("multer");
+const multer = require('multer');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads')
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-})
+  destination: (req, _file, cb) => {
+    const dir = `public/uploads/${req.params.resource}`;
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir); // checking if folder exists
+    cb(null, dir);
+  }, // where the files are being stored
+  filename: (_req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`) // getting the file name
+});
+const upload = multer({ storage });
 
-const upload = multer({ storage })
+const { articlesController, categoriesController, markersController, messagesController, pagesController, uploadsController } = require('./controllers/admin');
 
-const { articlesController, categoriesController, markersController, messagesController, pagesController } = require('./controllers/admin');
+router.route('uploads/:resource')
+  .post(upload.single('file'), uploadsController.create);
 
 router.route('/articles')
   .get(articlesController.index)
-  .post(upload.single('image'), articlesController.create);
+  .post(articlesController.create);
 
 router.route('/articles/:id')
   .get(articlesController.view)
-  .patch(upload.single('image'), articlesController.update)
-  .put(upload.single('image'), articlesController.update)
+  .patch(articlesController.update)
+  .put(articlesController.update)
   .delete(articlesController.remove);
 
 router.route('/categories')
