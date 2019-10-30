@@ -25,8 +25,9 @@ class Mapa extends Component {
           zoom={8}
           initialCenter={pontoCentralizacao}
         >
-          {markers.map(({ name, latitude, longitude }) => (
+          {markers.map(({ name, latitude, longitude }, index) => (
             <Marker
+              key={index}
               position={{ lat: latitude, lng: longitude }}
               name={name}
               icon={Marker.icon}

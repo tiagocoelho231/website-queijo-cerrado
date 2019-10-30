@@ -1,4 +1,5 @@
 const Category = require('../../models/category.model');
+const Page = require('../../models/page.model')
 
 exports.index = async (req, res) => {
 	const { filter, limit } = req.body;
@@ -48,6 +49,9 @@ exports.update = async (req, res) => {
 exports.remove = async (req, res) => {
 	const { id } = req.params;
 	try {
+		const relatedPages = await Page.find({ category: id })
+		if (relatedPages.length)
+			return res.status(400).send({ message: 'Antes de remover a categoria, remova as páginas relacionadas.' })
 		const category = await Category.findByIdAndDelete(id);
 		return res.json(category);
 	} catch (err) {

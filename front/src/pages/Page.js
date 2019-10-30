@@ -15,7 +15,7 @@ class Page extends Component {
     return (
       <main className="page-content">
         <h1>{page.title}</h1>
-        <section className="custom-page-content" dangerouslySetInnerHTML={{ __html: page.content }}></section>
+        <section className="custom-content" dangerouslySetInnerHTML={{ __html: page.content }}></section>
       </main>
     )
   }

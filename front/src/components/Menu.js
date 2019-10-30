@@ -24,7 +24,7 @@ class Menu extends Component {
     const { menuActive } = this.state;
     const { pages } = this.props;
     return pages.map(({ url, subMenu, name }, key) => (
-      <li key={key} className="menuOptions" onMouseEnter={() => this.toggleMenuClass(name)} onMouseLeave={() => this.toggleMenuClass(null)} >
+      <li key={key} className="menuOption" onMouseEnter={() => this.toggleMenuClass(name)} onMouseLeave={() => this.toggleMenuClass(null)} >
         <button>{name}</button>
         <ul className={`subOptions${menuActive === name ? ' active' : ''}`}>
           {subMenu.map(page => <li key={page}><Link to={`/${url}/${page.url}`}>{page.title}</Link></li >)}
@@ -49,20 +49,21 @@ class Menu extends Component {
   render() {
     const { openMenu } = this.state;
     const { pages } = this.props;
+    console.log("render header");
     return (
       <header className="menu">
         <div>
           <Link to="/" className="header-logo">
             <InlineSVG src={require('../img/logo.svg')} alt="Logo" />
-            <h1>Queijo Raiz do Cerrado</h1>
+            <h1><span className="brown-font">APRO</span><span className="orange-font">CER</span></h1>
           </Link>
           <MediaQuery minWidth={998}>
             <nav>
               <ul>
-                {pages.length > 0 && this.renderDesktopMenuOptions()}
-                <li className="menuOptions">
+                <li className="menuOption">
                   <Link to="/noticias">Notícias</Link>
                 </li>
+                {pages.length > 0 && this.renderDesktopMenuOptions()}
               </ul>
             </nav>
           </MediaQuery>
@@ -71,6 +72,9 @@ class Menu extends Component {
           <MediaQuery maxWidth={997}>
             <nav className={`header-nav${openMenu ? ' active' : ''}`}>
               <ul>
+                <li className="menuOption">
+                  <Link to="/noticias">Notícias</Link>
+                </li>
                 {pages.length > 0 && this.renderMobileMenuOptions()}
               </ul>
             </nav>

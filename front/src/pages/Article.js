@@ -15,7 +15,7 @@ class Article extends Component {
     return (
       <main className="article-content">
         <h1>{article.title}</h1>
-        <section className="custom-article-content" dangerouslySetInnerHTML={{ __html: article.content }}></section>
+        <section className="custom-content" dangerouslySetInnerHTML={{ __html: article.content }}></section>
       </main>
     )
   }

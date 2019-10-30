@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import config from '../config';
 
 const Article = ({ article: { title, description, image, url } }) => (
-  <Link to={`/noticias/${url}`}>
+  <Link to={`/noticias/${url}`} className="article-list-item">
     <div className="article-list-item-image">
-      <img src={`${config.API}${image.url}`} alt={title}/>
+      <img src={`${config.API}${image.url}`} alt={title} />
     </div>
     <article className="article-description">
       <p><strong>{title}</strong></p>
