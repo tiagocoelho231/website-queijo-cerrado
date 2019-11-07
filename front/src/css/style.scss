@@ -1,23 +1,33 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
-@import './quill.css';
-@import "~slick-carousel/slick/slick.css"; 
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
+@import "./quill.css";
+@import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
 $brownColor: #4d3116;
 $orangeColor: #e7ab2f;
 $gridWidth: 1720px;
 
-* { box-sizing: border-box; }
-
-body {
-	margin: 0;
-  padding: 0;
-  font-family: Roboto, sans-serif;
-	background-color: #FFF;
-	color: #000;
+* {
+  box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, p { margin: 0; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
 
 button {
   background-color: transparent;
@@ -29,75 +39,112 @@ button {
 }
 
 ul {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 a {
-	color: inherit;
-	text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 input {
-	border: none;
-	background-color: transparent;
-	color: inherit;
-	font: inherit;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
 
-	&::placeholder { color: inherit; }
+  &::placeholder {
+    color: inherit;
+  }
 }
 
-.brown-font { color: $brownColor; }
+.brown-font {
+  color: $brownColor;
+}
 
-.orange-font { color: $orangeColor; }
+.orange-font {
+  color: $orangeColor;
+}
 
 main {
   padding-top: 80px;
-  
-  h1, h2, h3, h4, h5 { line-height: 1.1; }
 
-  h1 { font-size: 70px; }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    line-height: 1.1;
+  }
 
-  h2 { font-size: 55px; }
+  h1 {
+    font-size: 70px;
+  }
 
-  h3 { font-size: 30px; }
+  h2 {
+    font-size: 55px;
+  }
 
-  h4 { font-size: 25px; }
+  h3 {
+    font-size: 30px;
+  }
 
-  h5 { font-size: 20px; }
+  h4 {
+    font-size: 25px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
 }
 
+// feb52f menu esquerda
+// f69028 menu direita
+// feb52f Fonte
 
 .menu {
   width: 100%;
-  background: #FFF;
+  background: #fff;
   color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
 
-  > div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  .gradient-line {
+    height: 15px;
+    background-image: linear-gradient(to right, #feb52f, #f69028);
   }
 
   @media screen and (min-width: 998px) {
-    height: 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    nav {
-      display: flex;
+    .navbar {
+      height: 70px;
       width: 100%;
-      max-width: 700px;
-      > ul {
-        width: 100%;
+      display: flex;
+      nav {
         display: flex;
-        list-style: none;
-        font-size: 20px;
+        width: 100%;
+        > ul {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          list-style: none;
+          font-size: 18px;
+          >li:not(:last-of-type){
+            padding: 8px 12px;
+            border-radius: 15px;
+          }:hover:not(:last-of-type){
+            color: #fff;
+            background: linear-gradient(to right, #feb52f, #f69028);
+          }
+        }
+        .currentOption{
+          color: #fff;
+          background: linear-gradient(to right, #feb52f, #f69028);
+        }
       }
     }
     > div {
@@ -130,7 +177,9 @@ main {
     height: 100%;
   }
 
-  svg path { fill: #000; }
+  svg path {
+    fill: #000;
+  }
 }
 
 .header-menu-button {
@@ -141,130 +190,95 @@ main {
   width: 40px;
   border-radius: 10px;
 
-  svg path { fill: $brownColor; }
-}
-
-.menuOption {
-  display: flex;
-  align-items: center;
-  position: relative;
-
-  a, button {
-    font-size: 18px;
-    cursor: pointer;
-  }
-
-  @media screen and (min-width: 998px) {
-    transition: color 0.3s;
-
-    &:not(:last-of-type) { margin-right: 40px; }
+  svg path {
+    fill: $brownColor;
   }
 }
-
-.subOptions {
-  &:not(.active) {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  @media screen and (min-width: 998px) {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background: #FFF;
-    color: $orangeColor;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    opacity: 1;
-    transition: opacity 0.3s;
-
-    &::before {
-      content: '';
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-bottom: 10px solid #FFF;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      z-index: 1;
-    }
-
-    > li {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      padding: 10px 0;
-      transition: background-color 0.3s, color 0.3s;
-      cursor: pointer;
-    }
-  }
-
-  @media screen and (max-width: 997px) {
-    li {
-      padding: 0 10px;
-      margin: 7px 0;
-      &:active {
-        background: $orangeColor;
-        color: #FFF;
-        transition: 0.2s;
-      }
-    }
-    button {
-      width: 100%;
-      padding: 7px;
-      &:not(:last-of-type) {
-        border-bottom: 2px solid $brownColor;
-      }
-    }
-  }
-}
-
 
 .header-search {
-	form { height: 100%; }
+  display: flex;
+  align-items: center;
+  
+  form {
+    height: 100%;
+  }
 
-	input {
-		height: 100%;
-		width: 100%;
-		background: url('../img/icon-search.svg') no-repeat center right 20px;
-	}
-
-	@media screen and (min-width: 998px) {
-		order: 1;
-		input {
-			border: 2px solid $brownColor;
-			border-radius: 20px;
-			padding: 0 20px;
-		}
-	}
-	@media screen and (max-width: 997px) {
-		input { padding: 0 10px; }
-	}
+  input {
+    height: 100%;
+    width: 100%;
+    background: url("../img/icon-search.svg") no-repeat center right 20px;
+  }
+  
+  .inline-svg {
+    width: 30px;
+    display: block;
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  svg path {
+    fill: #feb52f;
+  }
+  
+  @media screen and (min-width: 998px) {
+    order: 1;
+    display: flex;  
+    
+    >div {
+      padding: 0 5px;
+      margin-right: 5px;
+      background-color: rgb(225, 225, 225);
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+    input {
+      color: rgb(141, 141, 141);
+      height: 30px;
+      border: 0px solid;
+      background-color: rgb(225, 225, 225);
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 0 20px;
+      outline: none;
+    }
+  }
+  @media screen and (max-width: 997px) {
+    input {
+      padding: 0 10px;
+    }
+  }
 }
 
 .home-content {
-	@media screen and (min-width: 998px) { padding-top: 100px; }
+  @media screen and (min-width: 998px) {
+    padding-top: 100px;
+  }
 
-	@media screen and (max-width: 997px) { padding-top: 80px; }
+  @media screen and (max-width: 997px) {
+    padding-top: 80px;
+  }
 }
 
 .home-banner {
-	margin-bottom: 20px;
-	width: 100%;
+  margin-bottom: 20px;
+  width: 100%;
 
-	img { width: 100%; }
+  img {
+    width: 100%;
+  }
 }
 
 .bloco-texto {
   margin: 0 auto 80px;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-align: center;
     margin-bottom: 15px;
   }
@@ -275,12 +289,14 @@ main {
     font-size: 22px;
   }
 
-	@media screen and (min-width: 998px) {
+  @media screen and (min-width: 998px) {
     max-width: $gridWidth;
     padding: 0 40px;
-	}
+  }
 
-	@media screen and (max-width: 997px) { padding: 0 20px; }
+  @media screen and (max-width: 997px) {
+    padding: 0 20px;
+  }
 }
 
 .map-wrapper {
@@ -304,7 +320,9 @@ main {
   padding: 120px 40px 40px;
   margin: 0 auto;
 
-  h1 { margin-bottom: 40px; }
+  h1 {
+    margin-bottom: 40px;
+  }
 }
 
 .articles-list {
@@ -314,7 +332,7 @@ main {
 }
 
 .article-list-item {
-  box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -336,13 +354,14 @@ main {
   }
 }
 
-.article-content, .page-content {
+.article-content,
+.page-content {
   max-width: $gridWidth;
   padding: 120px 40px;
   margin: 0 auto;
 }
 
-.custom-content{
+.custom-content {
   p {
     img {
       max-width: 100%;
@@ -355,29 +374,33 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  >div {
+  > div {
     width: 100%;
     margin-bottom: 30px;
     img {
-      @media screen and (max-width: 997px) { padding: 0 5px; }
+      @media screen and (max-width: 997px) {
+        padding: 0 5px;
+      }
     }
   }
 }
 
 .footer {
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:30px;
-  width:100%;
-  background:#999;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+  background: #999;
 }
 
 //HOVERS
 
-.menuOption:hover { color: $orangeColor; }
+.menuOption:hover {
+  color: $orangeColor;
+}
 
 .subOptions.active > li:hover {
   background: $orangeColor;
-  color: #FFF;
+  color: #fff;
 }

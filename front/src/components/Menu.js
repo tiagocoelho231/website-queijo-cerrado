@@ -9,7 +9,6 @@ class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = { openMenu: false, openSubMenu: false, menuActive: '' };
-    this.categories = [];
   }
 
   componentDidMount() {
@@ -18,52 +17,42 @@ class Menu extends Component {
 
   toggleMenu = () => this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
 
-  toggleMenuClass = tab => this.setState(({ menuActive }) => ({ menuActive: menuActive === tab ? '' : tab }));
-
-  renderDesktopMenuOptions = () => {
-    const { menuActive } = this.state;
-    const { pages } = this.props;
-    return pages.map(({ url, subMenu, name }, key) => (
-      <li key={key} className="menuOption" onMouseEnter={() => this.toggleMenuClass(name)} onMouseLeave={() => this.toggleMenuClass(null)} >
-        <button>{name}</button>
-        <ul className={`subOptions${menuActive === name ? ' active' : ''}`}>
-          {subMenu.map(page => <li key={page}><Link to={`/${url}/${page.url}`}>{page.title}</Link></li >)}
-        </ul>
-      </li>
-    ));
-  };
-
-  renderMobileMenuOptions = () => {
-    const { menuActive } = this.state;
-    const { pages } = this.props;
-    return pages.map(({ id, name, subMenu }, key) =>
-      <li key={key}>
-        <p onClick={() => this.toggleMenuClass(id)}>{name}</p>
-        <ul className={menuActive === id ? 'subOptionsActive' : 'subOptionsInactive'}>
-          {subMenu.map((element, key) => <li key={key}><Link onClick={() => { this.toggleMenu(); this.toggleMenuClass('') }} to={`/${element.url}`}>{element.name}</Link></li>)}
-        </ul>
-      </li>
-    );
-  };
-
   render() {
     const { openMenu } = this.state;
     const { pages } = this.props;
-    console.log("render header");
+    const currentPath = window.location.pathname;
     return (
       <header className="menu">
-        <div>
+        <div className="gradient-line"></div>
+        <div className="navbar">
           <Link to="/" className="header-logo">
             <InlineSVG src={require('../img/logo.svg')} alt="Logo" />
             <h1><span className="brown-font">APRO</span><span className="orange-font">CER</span></h1>
           </Link>
+
           <MediaQuery minWidth={998}>
             <nav>
               <ul>
-                <li className="menuOption">
-                  <Link to="/noticias">Notícias</Link>
+                <li className={`${currentPath === "/" ? 'currentOption' : ''}`}>
+                  <Link to="/">QUEIJO DO CERRADO</Link>
                 </li>
-                {pages.length > 0 && this.renderDesktopMenuOptions()}
+                <li className={`${currentPath === "/aprocer" ? 'currentOption' : ''}`}>
+                  <Link to="/aprocer">APROCER</Link>
+                </li>
+                <li className={`${currentPath === "/noticias"? 'currentOption' : ''}`}>
+                  <Link to="/noticias">NOTÍCIAS</Link>
+                </li>
+                <li className={`${currentPath === "/contato"? 'currentOption' : ''}`}>
+                  <Link to="/contato">CONTATO</Link>
+                </li>
+                <li className="header-search">
+                  <div>
+                    <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
+                  </div>
+                  <form>
+                    <input type="text" placeholder="Buscar" />
+                  </form>
+                </li>
               </ul>
             </nav>
           </MediaQuery>
