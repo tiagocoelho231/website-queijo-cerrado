@@ -4,7 +4,7 @@ import Mapa from '../components/Mapa';
 export default () => {
   return (
     <main>
-      <div style={{height: "800px"}}></div>
+      <div style={{height: "100vh"}}></div>
     </main>
   );
 };

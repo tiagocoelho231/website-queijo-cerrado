@@ -90,14 +90,14 @@ class Menu extends Component {
                 {this.menuItems()}
               </ul>
             </nav>
-            <div className="header-search">
+            {/* <div className="header-search">
               <div>
                 <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
               </div>
               <form>
                 <input type="text" placeholder="Buscar" />
               </form>
-            </div>
+            </div> */}
             <button className="header-menu-button" onClick={this.toggleMenu}>
               <MenuIcon />
             </button>
