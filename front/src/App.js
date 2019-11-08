@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Menu from './components/Menu';
+import Footer from './components/Footer';
 import { Article, Articles, Contato, Home, NotFound, Page } from './pages';
 
 export default () => (
@@ -14,5 +15,6 @@ export default () => (
 			<Route path="/:category/:page" component={Page} />
 			<Route component={NotFound} />
 		</Switch>
+		<Footer />
 	</Router>
 );

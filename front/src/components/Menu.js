@@ -8,7 +8,27 @@ import { InlineSVG } from '.';
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = { openMenu: false, openSubMenu: false, menuActive: '' };
+    this.state = {
+      pages: [
+        {
+          title: "QUEIJO DO CERRADO",
+          path: "/"
+        },
+        {
+          title: "APROCER",
+          path: "/aprocer"
+        },
+        {
+          title: "NOTÍCIAS",
+          path: "/noticias"
+        },
+        {
+          title: "CONTATO",
+          path: "/contato"
+        },
+      ],
+      openMenu: false, openSubMenu: false, menuActive: '', active: window.location.pathname
+    };
   }
 
   componentDidMount() {
@@ -17,10 +37,27 @@ class Menu extends Component {
 
   toggleMenu = () => this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
 
+  changeActiveOption(menuItem) {
+    this.setState({ active: menuItem });
+  }
+
+  menuItems() {
+    return this.state.pages.map(menuItem =>
+      <li key={menuItem.title}
+        className={`${this.state.active === menuItem.path ? 'currentOption' : ''}`}
+        onClick={this.changeActiveOption.bind(this, menuItem.path)}>
+        <Link
+          to={menuItem.path}
+        >
+          {menuItem.title}
+        </Link>
+      </li>
+    )
+  }
+
   render() {
     const { openMenu } = this.state;
-    const { pages } = this.props;
-    const currentPath = window.location.pathname;
+
     return (
       <header className="menu">
         <div className="gradient-line"></div>
@@ -31,20 +68,9 @@ class Menu extends Component {
           </Link>
 
           <MediaQuery minWidth={998}>
-            <nav>
+            <nav className="desktop-nav">
               <ul>
-                <li className={`${currentPath === "/" ? 'currentOption' : ''}`}>
-                  <Link to="/">QUEIJO DO CERRADO</Link>
-                </li>
-                <li className={`${currentPath === "/aprocer" ? 'currentOption' : ''}`}>
-                  <Link to="/aprocer">APROCER</Link>
-                </li>
-                <li className={`${currentPath === "/noticias"? 'currentOption' : ''}`}>
-                  <Link to="/noticias">NOTÍCIAS</Link>
-                </li>
-                <li className={`${currentPath === "/contato"? 'currentOption' : ''}`}>
-                  <Link to="/contato">CONTATO</Link>
-                </li>
+                {this.menuItems()}
                 <li className="header-search">
                   <div>
                     <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
@@ -61,12 +87,17 @@ class Menu extends Component {
           <MediaQuery maxWidth={997}>
             <nav className={`header-nav${openMenu ? ' active' : ''}`}>
               <ul>
-                <li className="menuOption">
-                  <Link to="/noticias">Notícias</Link>
-                </li>
-                {pages.length > 0 && this.renderMobileMenuOptions()}
+                {this.menuItems()}
               </ul>
             </nav>
+            <div className="header-search">
+              <div>
+                <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
+              </div>
+              <form>
+                <input type="text" placeholder="Buscar" />
+              </form>
+            </div>
             <button className="header-menu-button" onClick={this.toggleMenu}>
               <MenuIcon />
             </button>
