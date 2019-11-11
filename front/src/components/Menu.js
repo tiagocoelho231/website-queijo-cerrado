@@ -10,24 +10,16 @@ class Menu extends Component {
     super(props);
     this.state = {
       pages: [
-        {
-          title: "QUEIJO DO CERRADO",
-          path: "/"
-        },
-        {
-          title: "APROCER",
-          path: "/aprocer"
-        },
-        {
-          title: "NOTÍCIAS",
-          path: "/noticias"
-        },
-        {
-          title: "CONTATO",
-          path: "/contato"
-        },
+        { title: "Queijo do Cerrado", path: "/" },
+        { title: "Aprocer", path: "/aprocer" },
+        { title: "Histórias", path: "/historias" },
+        { title: "Notícias", path: "/noticias" },
+        { title: "Contato", path: "/contato" },
       ],
-      openMenu: false, openSubMenu: false, menuActive: '', active: window.location.pathname
+      openMenu: false,
+      openSubMenu: false,
+      menuActive: '',
+      active: window.location.pathname
     };
   }
 
@@ -63,22 +55,13 @@ class Menu extends Component {
         <div className="gradient-line"></div>
         <div className="navbar">
           <Link to="/" className="header-logo">
-            <InlineSVG src={require('../img/logo.svg')} alt="Logo" />
-            <h1><span className="brown-font">APRO</span><span className="orange-font">CER</span></h1>
+            <h1><InlineSVG src={require('../img/logo.svg')} alt="Logo" /></h1>
           </Link>
 
           <MediaQuery minWidth={998}>
             <nav className="desktop-nav">
               <ul>
                 {this.menuItems()}
-                <li className="header-search">
-                  <div>
-                    <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
-                  </div>
-                  <form>
-                    <input type="text" placeholder="Buscar" />
-                  </form>
-                </li>
               </ul>
             </nav>
           </MediaQuery>
@@ -102,6 +85,20 @@ class Menu extends Component {
               <MenuIcon />
             </button>
           </MediaQuery>
+
+          <div className="header-search">
+            <div>
+              <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
+            </div>
+            <form>
+              <input type="text" placeholder="Buscar" />
+            </form>
+          </div>
+          <div className="header-social-networks">
+            <a href="http://instagram.com" className="instagram-link-header"><InlineSVG src={require('../img/icon-instagram.svg')} alt="Instagram" /></a>
+            <a href="http://youtube.com" className="youtube-link-header"><InlineSVG src={require('../img/icon-youtube.svg')} alt="Youtube" /></a>
+          </div>
+          <img src={require('../img/bandeira-minas.svg')} alt="Minas Gerais" className="bandeira-minas" />
         </div>
       </header>
     )

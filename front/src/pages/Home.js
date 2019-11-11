@@ -1,10 +1,10 @@
 import React from 'react';
-import Mapa from '../components/Mapa';
 
 export default () => {
   return (
-    <main>
-      <div style={{height: "100vh"}}></div>
+    <main className="home-content">
+      <img src={require('../img/banner.jpg')} alt="" className="home-banner" />
+      <p className="banner-text">O Queijo Minas Artesanal do Cerrado transforma uma cultura em uma referência de processo e sabor.</p>
     </main>
   );
 };

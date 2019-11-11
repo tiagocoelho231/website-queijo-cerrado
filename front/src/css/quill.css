@@ -723,7 +723,7 @@
 .custom-content {
   padding: 0;
   font-size: 1rem;
-  font-family: Roboto, sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .custom-content p:not(:last-child) {
