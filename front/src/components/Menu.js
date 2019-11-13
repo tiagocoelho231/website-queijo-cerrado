@@ -73,32 +73,16 @@ class Menu extends Component {
                 {this.menuItems()}
               </ul>
             </nav>
-            {/* <div className="header-search">
-              <div>
-                <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
-              </div>
-              <form>
-                <input type="text" placeholder="Buscar" />
-              </form>
-            </div> */}
             <button className="header-menu-button" onClick={this.toggleMenu}>
               <MenuIcon />
             </button>
           </MediaQuery>
 
-          <div className="header-search">
-            <div>
-              <InlineSVG src={require('../img/icon-search.svg')} alt="search" />
-            </div>
-            <form>
-              <input type="text" placeholder="Buscar" />
-            </form>
-          </div>
           <div className="header-social-networks">
             <a href="http://instagram.com" className="instagram-link-header"><InlineSVG src={require('../img/icon-instagram.svg')} alt="Instagram" /></a>
             <a href="http://youtube.com" className="youtube-link-header"><InlineSVG src={require('../img/icon-youtube.svg')} alt="Youtube" /></a>
-          </div>
           <img src={require('../img/bandeira-minas.svg')} alt="Minas Gerais" className="bandeira-minas" />
+          </div>
         </div>
       </header>
     )

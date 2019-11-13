@@ -287,11 +287,13 @@ main {
 
 .header-social-networks {
   display: flex;
+  align-items: center;
+  align-self: stretch;
   flex-shrink: 0;
-  height: 24px;
+  height: 100%;
   
   a {
-    height: 100%;
+    height: 24px;
 
     &:not(:last-of-type) {
       margin-right: 16px;
@@ -306,6 +308,7 @@ main {
 .bandeira-minas {
   align-self: flex-start;
   margin-top: 8px;
+  margin-left: 20px;
 }
 
 .footer {
