@@ -9,7 +9,7 @@ export default ({ field, form, labelRender, className = '', ...props }) => {
 		<div className={`input ${className}`}>
 			<label htmlFor={props.id}>
 				{labelRender && labelRender()}
-				{!labelRender && props.placeholder}
+				{!labelRender && props.label}
 			</label>
 			<input {...field} {...props} />
 			<ErrorMessage component="span" name={field.name} className="error" />
