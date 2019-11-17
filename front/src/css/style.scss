@@ -3,12 +3,21 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
+$defaultFontSize: 16px;
 $brownColor: #562E0E;
 $orangeColor: #e7ab2f;
 $gridWidth: 1720px;
 
-* {
-  box-sizing: border-box;
+@function px2rem($fontsize) {
+  @return $fontsize / $defaultFontSize * 1rem;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-size: $defaultFontSize;
+  @media screen and (max-width: 1440px) and (min-width: 1281px) { font-size: 14px; }
+  @media screen and (max-width: 1280px) and (min-width: 998px) { font-size: 13px; }
 }
 
 body {
@@ -17,7 +26,6 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: #fff;
   color: #000;
-  font-size: 24px;
 }
 
 h1,
@@ -87,12 +95,20 @@ main {
   }
 
   h1 {
-
+    font-size: 65px;
+    color: #FAAC18;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 40px;
   }
 
   h2 {
     text-transform: uppercase;
     font-weight: 400;
+  }
+
+  p {
+    font-size: px2rem(24px);
   }
 }
 
@@ -408,8 +424,22 @@ main {
   display: block;
 }
 
+
 .banner-text {
   
+}
+
+.queijo-minas {
+
+  @media screen and (min-width: 998px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: px2rem(50px);
+  }
+
+  @media screen and (max-width: 997px) {
+    
+  }
 }
 
 .bloco-texto {
@@ -693,13 +723,7 @@ main {
 }
 
 .contato-content {
-  h1 {
-    font-size: 65px;
-    color: #FAAC18;
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: 40px;
-  }
+  
 }
 
 .slick-slider.slick-slider {
