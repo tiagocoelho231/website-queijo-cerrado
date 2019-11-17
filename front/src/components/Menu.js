@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -16,10 +16,7 @@ class Menu extends Component {
         { title: "Notícias", path: "/noticias" },
         { title: "Contato", path: "/contato" },
       ],
-      openMenu: false,
-      openSubMenu: false,
-      menuActive: '',
-      active: window.location.pathname
+      openMenu: false
     };
   }
 
@@ -29,24 +26,6 @@ class Menu extends Component {
 
   toggleMenu = () => this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
 
-  changeActiveOption(menuItem) {
-    this.setState({ active: menuItem });
-  }
-
-  menuItems() {
-    return this.state.pages.map(menuItem =>
-      <li key={menuItem.title}
-        className={`${this.state.active === menuItem.path ? 'currentOption' : ''}`}
-        onClick={this.changeActiveOption.bind(this, menuItem.path)}>
-        <Link
-          to={menuItem.path}
-        >
-          {menuItem.title}
-        </Link>
-      </li>
-    )
-  }
-
   render() {
     const { openMenu } = this.state;
 
@@ -54,25 +33,22 @@ class Menu extends Component {
       <header className="menu">
         <div className="gradient-line"></div>
         <div className="navbar">
-          <Link to="/" className="header-logo">
+          <NavLink to="/" className="header-logo">
             <h1><InlineSVG src={require('../img/logo.svg')} alt="Logo" /></h1>
-          </Link>
+          </NavLink>
 
-          <MediaQuery minWidth={998}>
-            <nav className="desktop-nav">
-              <ul>
-                {this.menuItems()}
-              </ul>
-            </nav>
-          </MediaQuery>
-
-
+          <nav className={`header-nav${openMenu ? ' active' : ''}`}>
+            <ul>
+              {this.state.pages.map(({ title, path }) =>
+                <li key={title}>
+                  <NavLink exact to={path}>
+                    {title}
+                  </NavLink>
+                </li>
+              )}
+            </ul>
+          </nav>
           <MediaQuery maxWidth={997}>
-            <nav className={`header-nav${openMenu ? ' active' : ''}`}>
-              <ul>
-                {this.menuItems()}
-              </ul>
-            </nav>
             <button className="header-menu-button" onClick={this.toggleMenu}>
               <MenuIcon />
             </button>
@@ -89,7 +65,7 @@ class Menu extends Component {
   }
 }
 
-const mapStateToProps = ({ pages: { data: pages } }) => ({ pages })
+const mapStateToProps = ({ pages: { data: pages } }) => ({ pages });
 
 const mapDispatchToProps = dispatch => ({
   fetch: () => dispatch.pages.fetch()

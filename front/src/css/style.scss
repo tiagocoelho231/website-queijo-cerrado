@@ -136,36 +136,6 @@ main {
       align-items: center;
       justify-content: space-between;
       text-transform: uppercase;
-      .desktop-nav {
-        display: flex;
-        width: 100%;
-        max-width: 630px;
-        > ul {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: 16px;
-          > li {
-            border-radius: 16px;
-            height: 32px;
-            overflow: hidden;
-
-            > a {
-              height: 100%;
-              width: 100%;
-              padding: 0 16px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-          }
-        }
-        .currentOption, > ul > li:hover {
-          color: #fff;
-          background: linear-gradient(to right, #feb52f, #f69028);
-        }
-      }
     }
     > div {
       padding: 0 20px;
@@ -207,6 +177,44 @@ main {
 
         &.active {
           transform: translateX(0);
+        }
+      }
+    }
+  }
+}
+
+.header-nav {
+  @media screen and (min-width: 998px) {
+    display: flex;
+    width: 100%;
+    max-width: 630px;
+    > ul {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+      > li {
+        border-radius: 16px;
+        height: 32px;
+        overflow: hidden;
+
+        > a {
+          height: 100%;
+          width: 100%;
+          padding: 0 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            color: $orangeColor;
+          }
+          
+          &.active {
+            color: #fff;
+            background: linear-gradient(to right, #feb52f, #f69028);
+          }
         }
       }
     }

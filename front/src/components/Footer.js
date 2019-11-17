@@ -16,7 +16,7 @@ export default class Footer extends Component {
           <ul>
             <li><Link to="/">Queijo do Cerrado</Link></li>
             <li><Link to="/aprocer">APROCER</Link></li>
-            <li><Link to="/historia">História</Link></li>
+            <li><Link to="/historias">Histórias</Link></li>
             <li><Link to="/noticias">Notícias</Link></li>
             <li><Link to="/contato">Contato</Link></li>
           </ul>
