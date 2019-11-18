@@ -8,7 +8,7 @@ export default class Footer extends Component {
       <footer className="footer">
         <div className="content">
           <Link to="/" className="footer-logo">
-            <InlineSVG src={require('../img/logo-footer.svg')} alt="Logo" />
+            <img src={require('../img/logo-footer.svg')} alt="APROCER" />
           </Link>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Mauris eu metus lobortis augue cursus sodales quis id purus.

@@ -4,14 +4,31 @@ import { CustomSlider } from '../components'
 const Aprocer = () => {
   return (
     <main className="aprocer-content">
-      <section className="aprocer-first-block">
+      <section className="aprocer-first-block brown-font">
         <h1><img src={require('../img/aprocer-page-top-image.svg')} alt="Aprocer" className="aprocer-page-top-image" /></h1>
-        <p className="brown-font">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        <p>Pautada nos princípios do associativismo, a APROCER foi fundada em 2015, a partir da união de produtores de queijo da região do Cerrado. A associação tem por objetivo buscar constantemente a valorização e o reconhecimento de um bem comum, histórico e cultural: o Queijo Minas Artesanal do Cerrado. Desde a sua fundação, a APROCER, a partir de parcerias e convênios fechados para promoção dos produtores e de seu valioso produto, vem ganhando força, robustez e representatividade. Hoje, sob a presidência do produtor Wellington Carlos Vieira, de Cruzeiro da Fortaleza, a associação já conta com 14 associados.</p>
+        <p>Os benefícios para os membros associados vão desde a troca de experiências e compartilhamento de ideias para acelerar o aprendizado e crescimento, a captação de fornecedores, parceiros e possíveis clientes, o fortalecimento da marca individual por meio da força, representatividade e marca da associação, a solução de problemas e demandas junto às parcerias, até o acesso a programas de capacitação e treinamento e a ampliação da representatividade política junto a órgãos governamentais.</p>
+        <p>A APROCER trabalha em prol dos associados, promovendo o desenvolvimento produtivo da região de maneira sustentável, gerando qualidade de vida para os membros. Ela almeja o alcance, cada vez mais, de novos mercados, fazendo com que as pessoas possam (re)conhecer e apreciar o Queijo Minas Artesanal do Cerrado, que se destaca por sua qualidade e pelo sabor suave e diferenciado. O desejo é que esse queijo se efetive como uma marca de nossa região, sendo evidência do excelente trabalho de cada produtor, que deixe muito de sua história revelada nesse produto.</p>
         <CustomSlider className="slider-aprocer">
           <img src={require('../img/slide-aprocer.jpg')} alt="" />
           <img src={require('../img/slide-aprocer.jpg')} alt="" />
           <img src={require('../img/slide-aprocer.jpg')} alt="" />
         </CustomSlider>
+      </section>
+      <section className="parcerias text-block brown-font">
+        <h1>Parcerias</h1>
+        <p>A APROCER enxerga nas parcerias o caminho para concretização de sua missão. Desde o início, conta com parcerias que fazem a diferença para os produtores associados, tanto para o fortalecimento da microrregião do Cerrado, quanto para a entrega de um produto que possui cada vez mais qualidade para o consumidor.</p>
+        <p>EMATER, SEBRAE, UNIPAM, UFU, UFV e Sicoob Credicarpa são parceiros da APROCER na luta pela valorização do queijo produzido artesanalmente na Região do Cerrado Mineiro.</p>
+        <h2>EMATER e SEBRAE</h2>
+        <p>A parceria com a Empresa de Assistência Técnica e Extensão Rural (EMATER/MG) e com o Serviço Brasileiro de Apoio às Micro e Pequenas Empresas  (SEBRAE/MG) resultou na criação do Programa de Fortalecimento da Produção e Comercialização do Queijo Minas Artesanal do Cerrado, em 2016. O Programa já rendeu a realização de seminários, concursos regionais e ações de benchmarking, bem como a participação em cursos de capacitação, em feiras e em concursos estaduais e nacionais. Esse movimento resultou em prêmios para a região e evidenciou o potencial do Queijo Minas Artesanal do Cerrado. Além disso, desde o início de 2018, o SEBRAE oferece também aos associados o curso de Cultura da Cooperação, fundamental para o fortalecimento da APROCER.</p>
+        <h2>Sicoob Credicarpa</h2>
+        <p>O Sicoob Credicarpa é parceiro fiel da APROCER. Sediou as primeiras reuniões da associação, em Carmo do Paranaíba e, desde então, tem sido um fomentador de recursos e apoiador dos vários projetos desenvolvidos pela APROCER e seus parceiros.</p>
+        <h2>UNIPAM, UFU e UFV</h2>
+        <p>A parceria dessas instituições com a APROCER nasceu da busca pela qualificação e profissionalização da produção do Queijo Minas Artesanal feito em cidades do Cerrado e do Triângulo. Dessa parceria resultou o “Projeto de Estudo do Queijo Minas”.</p>
+        <p>A APROCER conta, além do apoio institucional da Universidade Federal de Viçosa (UFV), com o apoio da Universidade Federal de Uberlândia (UFU), do Centro Universitário de Patos de Minas (UNIPAM), do SEBRAE e da EMATER, no desenvolvimento da pesquisa sobre o tempo de maturação do queijo minas artesanal. O estudo visa determinar qual o prazo de maturação ideal para garantir segurança alimentar ao consumidor. A pesquisa foi lançada em março de 2019, porém iniciou-se de fato em outubro deste ano e se estende por um ano e meio.</p>
+        <p>Além do envolvimento na pesquisa do tempo de maturação, o UNIPAM intensificou sua parceria com a APROCER por meio do desenvolvimento, no segundo semestre de 2019, de um Projeto Intercursos, com alunos dos cursos de Gestão do Agronegócio, Jornalismo, Publicidade e Propaganda, Letras e Sistemas de Informação. Ao buscar conhecer a história do nosso queijo e dos próprios produtores, o projeto contribui na proposta de dar cara e forma à Associação.</p>
+        <h2>Jornalista Laryssa Caixeta</h2>
+        <p>Além de todas as parcerias já citadas, a APROCER conta, desde o início do segundo semestre de 2019, com o apoio da jornalista e também professora do UNIPAM, Laryssa Caixeta, que tem tomado a Associação como fonte de estudo para seu mestrado profissional, auxiliando no processo de divulgação e fortalecimento da marca.</p>
       </section>
       <section className="aprocer-yellow-block">
         <div>
@@ -57,7 +74,7 @@ const Aprocer = () => {
         </div>
       </section>
       <section className="economia-crescente">
-        <h2>Economia Crescente</h2>
+        <h1>Economia Crescente</h1>
         <p>As condições físico-ambientais encontradas no Cerrado são favoráveis à produção de queijo, certamente devido a um ambiente propício ao desenvolvimento de bactérias típicas, que promovem o sabor característico do queijo tão apreciado pelos consumidores.</p>
         <div>
           <div>
@@ -83,7 +100,7 @@ const Aprocer = () => {
           <div>
             <h2>Associação e Seus Propósitos</h2>
             <div className="plano-desenvolvimento">
-              <h2>Plano de Desenvolvimento</h2>
+              <h3>Plano de Desenvolvimento</h3>
               <p>Texto do plano de desenvolvimento</p>
             </div>
           </div>
