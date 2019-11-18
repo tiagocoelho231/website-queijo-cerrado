@@ -3,21 +3,12 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-$defaultFontSize: 16px;
 $brownColor: #562E0E;
 $orangeColor: #e7ab2f;
 $gridWidth: 1720px;
 
-@function px2rem($fontsize) {
-  @return $fontsize / $defaultFontSize * 1rem;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  font-size: $defaultFontSize;
-  @media screen and (max-width: 1440px) and (min-width: 1281px) { font-size: 14px; }
-  @media screen and (max-width: 1280px) and (min-width: 998px) { font-size: 13px; }
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -26,6 +17,7 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: #fff;
   color: #000;
+  font-size: 24px;
 }
 
 h1,
@@ -69,8 +61,6 @@ input, textarea {
   }
 }
 
-textarea { resize: none; }
-
 .inline-svg svg {
   display: block;
   height: 100%;
@@ -85,7 +75,7 @@ textarea { resize: none; }
 }
 
 main {
-  padding-top: px2rem(100px);
+  padding-top: 80px;
   min-height: 100vh;
 
   h1,
@@ -97,19 +87,13 @@ main {
   }
 
   h1 {
-    font-size: px2rem(65px);
-    color: #FAAC18;
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: px2rem(40px);
+
   }
 
   h2 {
     text-transform: uppercase;
     font-weight: 400;
   }
-
-  p { font-size: px2rem(24px); }
 }
 
 .menu {
@@ -123,21 +107,23 @@ main {
 
   .gradient-line {
     width: 100%;
-    height: px2rem(15px);
+    height: 15px;
     background-image: linear-gradient(to right, #feb52f, #f69028);
   }
 
   @media screen and (min-width: 998px) {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     .navbar {
-      height: px2rem(85px);
+      height: 65px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       text-transform: uppercase;
     }
-    > div { padding: 0 px2rem(20px); }
+    > div {
+      padding: 0 20px;
+    }
   }
 
   @media screen and (max-width: 997px) {
@@ -182,41 +168,32 @@ main {
 }
 
 .header-nav {
-
-  @media screen and (min-width: 1281px) {
-    margin: 0 px2rem(100px);
-  }
-
-  @media screen and (min-width: 998px) and (max-width: 1280px) {
-    margin: 0 px2rem(40px);
-  }
-
   @media screen and (min-width: 998px) {
     display: flex;
     width: 100%;
-    max-width: px2rem(1000px);
-    
+    max-width: 630px;
     > ul {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: px2rem(18px);
-
+      font-size: 16px;
       > li {
-        border-radius: 20px;
-        height: px2rem(40px);
+        border-radius: 16px;
+        height: 32px;
         overflow: hidden;
 
         > a {
           height: 100%;
           width: 100%;
-          padding: 0 px2rem(20px);
+          padding: 0 16px;
           display: flex;
           justify-content: center;
           align-items: center;
 
-          &:hover { color: $orangeColor; }
+          &:hover {
+            color: $orangeColor;
+          }
           
           &.active {
             color: #fff;
@@ -230,6 +207,7 @@ main {
 
 .header-logo {
   height: 100%;
+  font-size: 14px;
 
   h1 {
     padding: 5px 0;
@@ -239,10 +217,12 @@ main {
   .inline-svg {
     display: block;
     height: 100%;
+    width: 185px;
   }
 
   svg {
     display: block;
+    width: 100%;
     height: 100%;
   }
 }
@@ -377,9 +357,8 @@ main {
       }
     }
   }
-
   .credit {
-    height: px2rem(25px);
+    height: 25px;
     width: 100%;
     background-color: #f4cb00;
     display: flex;
@@ -388,22 +367,8 @@ main {
     > p {
       color: #2b0b05;
       text-align: center;
-      font-size: px2rem(14px);
+      font-size: 14px;
     }
-  }
-
-  
-
-  @media screen and (min-width: 998px) {
-    height: 300px;
-    .content {
-      height: 275px;
-      p {
-        width: px2rem(400px);
-        line-height: 2.2;
-      }
-    }
-    .credit { height: px2rem(25px); }
   }
 
   @media screen and (max-width: 997px) {
@@ -425,6 +390,20 @@ main {
       }
     }
   }
+
+  @media screen and (min-width: 998px) {
+    height: 300px;
+    .content {
+      height: 275px;
+      p {
+        width: 400px;
+        line-height: 2.2;
+      }
+    }
+    .credit {
+      height: 25px;
+    }
+  }
 }
 
 .home-content {
@@ -437,22 +416,8 @@ main {
   display: block;
 }
 
-
 .banner-text {
   
-}
-
-.queijo-minas {
-
-  @media screen and (min-width: 998px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: px2rem(50px);
-  }
-
-  @media screen and (max-width: 997px) {
-    
-  }
 }
 
 .bloco-texto {
@@ -736,7 +701,13 @@ main {
 }
 
 .contato-content {
-  
+  h1 {
+    font-size: 65px;
+    color: #FAAC18;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 40px;
+  }
 }
 
 .slick-slider.slick-slider {
@@ -766,25 +737,28 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  font-size: px2rem(20px);
-
-  label { padding-left: px2rem(20px); }
-
-  input,
-  textarea {
-    width: 100%;
-    border: px2rem(2px) solid $brownColor;
-    border-radius: 20px;
-  }
 
   .input {
     margin-bottom: 30px;
-    width: 100%;
+
+    &.name {
+      width: 78%;
+    }
+
+    &.phone {
+      width: 20%;
+    }
+
+    &.email {
+      width: 100%;
+    }
 
     input {
-      
-      height: px2rem(40px);
-      padding: 0 px2rem(18px);
+      width: 100%;
+      border: 2px solid $brownColor;
+      border-radius: 20px;
+      height: 40px;
+      padding: 0 20px;
     }
   }
 
@@ -792,27 +766,185 @@ main {
     width: 100%;
 
     textarea {
-      height: px2rem(200px);
-      padding: px2rem(10px) px2rem(20px);
+      width: 100%;
+      border: 2px solid $brownColor;
+      border-radius: 20px;
+      padding: 0 20px;
     }
   }
+}
 
-  .contato-button {
-    background-color: $brownColor;
-    color: #FFF;
-    border-radius: 20px;
-    padding: 0 px2rem(18px);
-    border: px2rem(2px) solid $brownColor;
-    height: px2rem(40px);
-    margin: px2rem(20px) auto 0;
+.historia-container-1 { // PEDRO
+  display: grid;
+  grid-template-columns: 7.5% 15% 10% 10% 60%;
+  width: 100%;
+  height: 300px;
+  align-items: center;
+
+  .item-1 {
+    text-align: left;
+    grid-column: 2;
   }
-
-  @media screen and (min-width: 998px) {
-    .name { width: 78%; }
-    .phone { width: 20%; }
-  }
-
-  @media screen and (max-width: 997px) {
-    
+  
+  .item-2 {
+    padding: 50px;
+    text-align: left;
+    grid-column: 5;
+    background-image: linear-gradient(to right, #feb52f, #f69028);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
   }
 }
+
+.historia-container-2 { // PEDRO
+  display: grid;
+  grid-template-columns: 7.5% 85% 7.5%;
+  grid-template-rows: 10% 80% 10%;
+  width: 100%;
+  height: 300px;
+  align-items: left;
+
+  .item-1 {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+  }
+}
+
+.historia-container-3 { // PEDRO
+  display: grid;
+  grid-template-columns: 7.5% 25% 5% 25% 5% 25% 7.5%;
+  grid-template-rows: 0% 50% 50% 0%;
+  width: 100%;
+  align-content: stretch;
+  padding: 30px;
+  height: 1000px;
+  align-items: top;
+
+  .imagem-queijo-historias{
+    width: 100%;
+    height: 100%
+  }
+
+  h5{
+    text-align: justify;
+  }
+
+  .image-1{
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .image-2{
+    grid-column: 4;
+    grid-row: 2;
+  }
+  .image-3{
+    grid-column: 6;
+    grid-row: 2;
+  }  
+  .image-4{
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .image-5{
+    grid-column: 4;
+    grid-row: 3;
+  }
+  .image-6{
+    grid-column: 6;
+    grid-row: 3;
+  }
+  
+}
+
+.historia-container-4 { // ROGÉRIO
+  display: grid;
+  grid-template-columns: 7.5% 25% 5% 60% 7.5%;
+  grid-template-rows: 25% 25% 25% 25%;
+  width: 100%;
+  align-content: stretch;
+  padding: 30px;
+  height: 1000px;
+  align-items: center;
+  
+  .imagem-7 {
+    text-align: center;
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .titulo-text-7{
+    grid-column: 4;
+    grid-row:2;
+    text-align:center;
+    color: white;
+    background-color: #FFB922;
+    padding: 30px;
+    
+  }
+  .text-7 {
+    text-align:justify;
+    grid-column: 4;
+    grid-row: 3;
+  }
+}
+
+.historia-container-5 { // ROGÉRIO
+  display: grid;
+  grid-template-columns: 20% 70% 7.5%;
+  grid-template-rows: 25% 25% 25% 25%;
+  width: 100%;
+  align-content: stretch;
+  padding: 30px;
+  height: 1000px;
+  align-items: center;
+  
+  .tirinha-1{
+    text-align:center;
+    grid-column: 2;
+    grid-row: 1;
+    color: white;
+    background-color: #212121;
+    padding: 50px;
+    
+
+  }
+  .tirinha-2{
+    text-align:center;
+    grid-column: 2;
+    grid-row: 2;
+    color: white;
+    background-color: #212121;
+    padding: 50px;
+    
+  }
+  .tirinha-3{
+    text-align:center;
+    grid-column: 2;
+    grid-row: 3;
+    color: white;
+    background-color: #212121;
+    padding: 50px;    
+  }
+}
+
+.historia-container-6 { // ROGÉRIO
+  display: grid;
+  grid-template-columns: 20% 70% 7.5%;
+  grid-template-rows: 25% 25% 25% 25%;
+  width: 100%;
+  align-content: stretch;
+  padding: 30px;
+  height: 1000px;
+  align-items: center;
+
+  .historia-ilustrada{
+    text-align:center;
+    grid-column: 2;
+    grid-row: 1;
+    color: white;
+    background-color: #FFB922;
+    padding: 300px;    
+  }
+
+}
+//HOVERS
