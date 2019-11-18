@@ -54,11 +54,13 @@ class Menu extends Component {
             </button>
           </MediaQuery>
 
-          <div className="header-social-networks">
-            <a href="https://instagram.com/aprocer_?igshid=1ou19mw18ppqs" className="instagram-link-header"><InlineSVG src={require('../img/icon-instagram.svg')} alt="Instagram" /></a>
-            <a href="https://www.youtube.com/channel/UCTlHuzUp2ZlET-omBxgb0Xg?view_as=subscriber" className="youtube-link-header"><InlineSVG src={require('../img/icon-youtube.svg')} alt="Youtube" /></a>
-            <img src={require('../img/bandeira-minas.svg')} alt="Minas Gerais" className="bandeira-minas" />
-          </div>
+          <MediaQuery minWidth={998}>  
+            <div className="header-social-networks">
+              <a href="https://instagram.com/aprocer_?igshid=1ou19mw18ppqs" className="instagram-link-header"><InlineSVG src={require('../img/icon-instagram.svg')} alt="Instagram" /></a>
+              <a href="https://www.youtube.com/channel/UCTlHuzUp2ZlET-omBxgb0Xg?view_as=subscriber" className="youtube-link-header"><InlineSVG src={require('../img/icon-youtube.svg')} alt="Youtube" /></a>
+              <img src={require('../img/bandeira-minas.svg')} alt="Minas Gerais" className="bandeira-minas" />
+            </div>
+          </MediaQuery>
         </div>
       </header>
     )
