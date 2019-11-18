@@ -74,10 +74,10 @@ export default class VoceSabia extends Component {
           <button className="voce-sabia-prev" onClick={() => this.slider.current.slickPrev()}><img src={require('../img/prev-arrow.svg')} alt="Previous" /></button>
           <div className="voce-sabia-list">
             <h2>Você Sabia?...</h2>
-            <img src={require('../img/voce-sabia.svg')} />
+            <img src={require('../img/voce-sabia.svg')} alt="Você Sabia?" />
             <Slider ref={this.slider} infinite fade arrows={false}>
-              {triviaContent.map(({ title, content }) => (
-                <article>
+              {triviaContent.map(({ title, content }, index) => (
+                <article key={index}>
                   <h3>{title}</h3>
                   <p>{content}</p>
                 </article>

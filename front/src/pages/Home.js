@@ -8,7 +8,7 @@ export default () => (
       <div><p>O Queijo Minas Artesanal do Cerrado <br /> transforma uma cultura em uma <br /> referência de processo e sabor.</p></div>
     </section>
     <section className="queijo-minas">
-      <img src={require('../img/IMG_8471.jpg')} />
+      <img src={require('../img/IMG_8471.jpg')} alt="" />
       <div className="text-block">
         <h1>Queijo Minas Artesanal do Cerrado</h1>
         <p>Muito mais que um produto, o Queijo Minas Artesanal do Cerrado é tradição. Entenda a história desse patrimônio que, apreciado por suas características únicas, ultrapassa gerações.</p>
