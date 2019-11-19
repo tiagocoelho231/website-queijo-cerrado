@@ -1018,58 +1018,96 @@ main {
   }
 
   @media screen and (min-width: 998px){
-    margin: 50px auto;
-    max-width: 800px;
+    margin: 40px auto;
+    max-width: 63rem;
   }
   @media screen and (max-width: 998px){
     margin: 0 auto;
-    padding: 0 20px;
-    max-width: 700px;
-    // color: $orangeColor;
+    padding: 0 15px;
+    max-width: 45rem;
   }
 }
 
 .noticias-block{
   display: flex;
+  margin-bottom: 15rem;
 
-  div{
-    max-width: 400px;
+  >div{
+    position: relative;
+    max-width: 30rem;
     border: 3px solid $orangeColor;
     border-radius: 50px;
     text-align: justify;
-    p{
+    >p{
       background-color: rgb(239, 237, 239);
       border-radius: 50px;
+    }
+    .circle-item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      background-color: $orangeColor;
+      border-radius: 50%;   
+      width: 10rem;
+      height: 10rem;     
+      img{
+        width: 10rem;
+        padding: 25px;
+      }
+      div{
+        position: absolute;
+        bottom: -3.5rem;
+        p{
+          color: $brownColor;
+          text-align: center;
+          font-size: 16px;
+          white-space: nowrap;
+        &:not(:last-of-type) {
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 
   @media screen and (min-width: 998px){
-  justify-content: center;
-  margin-bottom: 80px;
+    justify-content: center;
     div{
-      p{
+      >p{
         margin: 15px 5px;
         padding: 20px 40px;
+        padding-bottom: 5rem;
       }
       &:not(:last-of-type) {
-        margin-right: 20px;
+        margin-right: 3rem;
+      }
+      .circle-item{
+        left: 10rem;
+        bottom: -5rem;
       }
     }
   }
 
   @media screen and (max-width: 998px){
-  flex-direction: column;
-  align-items: center;
-  margin: 50px 15px;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 15px;
     div{
-      max-width: 600px;
-      p{
+      margin-bottom: 10rem;
+      max-width: 43rem;
+      >p{
         margin: 15px 5px;
-        padding: 30px 15px;
         font-size: 20px;
+        padding: 30px 15px;
+        padding-bottom: 5rem;
       }
-      &:not(:last-of-type) {
-        margin-bottom: 50px;
+      .circle-item{
+        bottom: -15rem;
+        left: calc(50% - 80px);
+        div{
+          bottom: -130%;
+        }
       }
     }
   }

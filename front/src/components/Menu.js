@@ -28,6 +28,7 @@ class Menu extends Component {
 
   render() {
     const { openMenu } = this.state;
+    const isActive = (path, match, location) => !!(match || path === location.pathname);
 
     return (
       <header className="menu">
@@ -41,7 +42,8 @@ class Menu extends Component {
             <ul>
               {this.state.pages.map(({ title, path }) =>
                 <li key={title}>
-                  <NavLink exact to={path}>
+                  <NavLink exact to={path} isActive={isActive.bind(this, path)}
+                  >
                     {title}
                   </NavLink>
                 </li>
