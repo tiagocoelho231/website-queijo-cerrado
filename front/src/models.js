@@ -1,6 +1,6 @@
-import axios from '../lib/axios'
+import axios from './lib/axios'
 
-export default {
+const messages = {
   state: { isLoading: false, success: false, error: null },
   reducers: {
     beforeSend: () => ({ isLoading: true, success: false, error: null }),
@@ -19,3 +19,5 @@ export default {
     }
   }),
 }
+
+export default { messages };
