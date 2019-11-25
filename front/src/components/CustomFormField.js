@@ -1,7 +1,7 @@
 import React from 'react'
 import { ErrorMessage } from 'formik'
 
-export default ({ field, form, labelRender, className = '', ...props }) => {
+const CustomFormField = ({ field, form, labelRender, className = '', ...props }) => {
 	if (!props.id)
 		props.id = field.name
 
@@ -16,3 +16,5 @@ export default ({ field, form, labelRender, className = '', ...props }) => {
 		</div>
 	)
 }
+
+export default CustomFormField

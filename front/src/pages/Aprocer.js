@@ -1,4 +1,5 @@
 import React from 'react'
+import MediaQuery from 'react-responsive'
 import { CustomSlider } from '../components'
 
 const Aprocer = () => {
@@ -49,7 +50,12 @@ const Aprocer = () => {
       <section className="mapa-aprocer">
         <div>
           <h2>Mapa da Região APROCER</h2>
-          <img src={require('../img/mapa.svg')} alt="Mapa" />
+          <MediaQuery minWidth={998}>
+            <img src={require('../img/mapa.svg')} alt="Mapa" />
+          </MediaQuery>
+          <MediaQuery maxWidth={997}>
+            <img src={require('../img/mapa-mobile.svg')} alt="Mapa" />
+          </MediaQuery>
           <ul>
             <li>1 - Abadia dos Dourados</li>
             <li>2 - Arapuá</li>

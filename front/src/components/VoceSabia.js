@@ -1,5 +1,21 @@
 import React, { Component, createRef } from 'react';
 import Slider from 'react-slick';
+import MediaQuery from 'react-responsive';
+
+const sliderProps = {
+  arrows: false,
+  fade: true,
+  infinite: true,
+  responsive: [
+    {
+      breakpoint: 997,
+      settings: {
+        swipe: true,
+        arrows: false
+      }
+    }
+  ]
+}
 
 const triviaContent = [
   {
@@ -63,7 +79,6 @@ const triviaContent = [
 export default class VoceSabia extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentTrivia: 0 }
     this.slider = createRef();
   }
 
@@ -71,11 +86,13 @@ export default class VoceSabia extends Component {
     return (
       <section className="voce-sabia">
         <div className="voce-sabia-wrapper">
-          <button className="voce-sabia-prev" onClick={() => this.slider.current.slickPrev()}><img src={require('../img/prev-arrow.svg')} alt="Previous" /></button>
+          <MediaQuery minWidth={998}>
+            <button className="voce-sabia-prev" onClick={() => this.slider.current.slickPrev()}><img src={require('../img/prev-arrow.svg')} alt="Previous" /></button>
+          </MediaQuery>
           <div className="voce-sabia-list">
             <h2>Você Sabia?...</h2>
             <img src={require('../img/voce-sabia.svg')} alt="Você Sabia?" />
-            <Slider ref={this.slider} infinite fade arrows={false}>
+            <Slider {...sliderProps} ref={this.slider}>
               {triviaContent.map(({ title, content }, index) => (
                 <article key={index}>
                   <h3>{title}</h3>
@@ -84,7 +101,9 @@ export default class VoceSabia extends Component {
               ))}
             </Slider>
           </div>
-          <button className="voce-sabia-next" onClick={() => this.slider.current.slickNext()}><img src={require('../img/next-arrow.svg')} alt="Next" /></button>
+          <MediaQuery minWidth={998}>
+            <button className="voce-sabia-next" onClick={() => this.slider.current.slickNext()}><img src={require('../img/next-arrow.svg')} alt="Next" /></button>
+          </MediaQuery>
         </div>
       </section>
     )

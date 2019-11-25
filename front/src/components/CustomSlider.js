@@ -5,7 +5,17 @@ const defaultSliderProps = {
   arrows: true,
   infinite: true,
   speed: 500,
-  swipe: false
+  swipe: false,
+  responsive: [
+    {
+      breakpoint: 997,
+      settings: {
+        swipe: true,
+        arrows: false,
+        dots: true
+      }
+    }
+  ]
 }
 
 const CustomSlider = ({ children, ...props }) => {
