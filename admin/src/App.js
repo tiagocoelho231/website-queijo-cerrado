@@ -18,10 +18,10 @@ const App = () => {
       dataProvider={addUploadCapabilities(restProvider(`${config.API}/admin`))}
     >
       <Resource {...resources.messages} />
-      <Resource {...resources.markers} />
+      {/* <Resource {...resources.markers} />
       <Resource {...resources.categories} />
       <Resource {...resources.pages} />
-      <Resource {...resources.articles} />
+      <Resource {...resources.articles} /> */}
     </Admin>
   );
 }
