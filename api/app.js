@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 app.use(cors());
 
-app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 app.use('/admin', adminRoutes);
 
