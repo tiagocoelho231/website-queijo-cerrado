@@ -35,11 +35,11 @@ const Aprocer = () => {
         <div>
           <div>
             <h2>Transformar</h2>
-            <p>Unir os produtores de queijo artesanal e compartihar conhecimentos da região do cerrado mineiro para crescerem como pessoas e como comunidade, de forma sustentável e inovadora.</p>
+            <p>Unir os produtores de queijo artesanal e compartilhar conhecimentos da região do cerrado mineiro para crescerem como pessoas e como comunidade, de forma sustentável e inovadora.</p>
           </div>
           <div>
             <h2>Reconhecer</h2>
-            <p>Perpetuar a produção artesanal do Queijo Minas do Cerrado, que preserva a natureza e se preocupa com o bem-estar dos animais, para torná-lo reconhecido e desej do pelo mercado local, regional, nacional e global.</p>
+            <p>Perpetuar a produção artesanal do Queijo Minas do Cerrado, que preserva a natureza e se preocupa com o bem-estar dos animais, para torná-lo reconhecido e desejado pelo mercado local, regional, nacional e global.</p>
           </div>
           <div>
             <h2>Experienciar</h2>
@@ -85,7 +85,7 @@ const Aprocer = () => {
         <div>
           <div>
             <img src={require('../img/icon-mapa-minas.svg')} alt="Mapa Minas" />
-            <p><strong>25%</strong> da produção de queijo é mineira. O Estado de Minas Gerais é <strong>MAIOR</strong> produtor de queijo do Brasil.</p>
+            <p><strong>25%</strong> da produção de queijo é mineira. O Estado de Minas Gerais é o <strong>MAIOR</strong> produtor de queijo do Brasil.</p>
           </div>
           <div>
             <img src={require('../img/icon-queijo.svg')} alt="Queijo" />
@@ -107,14 +107,14 @@ const Aprocer = () => {
             <h2>Associação e Seus Propósitos</h2>
             <div className="plano-desenvolvimento">
               <h3>Plano de Desenvolvimento</h3>
-              <p>Texto do plano de desenvolvimento</p>
+              <a href="/files/pdf-sample.pdf" download>Download do plano de desenvolvimento</a>
             </div>
           </div>
         </div>
         <div className="associacao-propositos-content">
           <div>
-            <p><strong>União no Associativismo:</strong> proporciona uma união capaz de fazer os empresários/produtores pensar coletivamente e permite a troca de experiências que os faz crescerem conjuntamente.</p>
-            <p><strong>Aculturamento:</strong> os empresários com perfil associativista têm ganhos significativos no que se refere à cultura empreendedora.</p>
+            <h3>União no Associativismo:</h3> <p> proporciona uma união capaz de fazer os empresários/produtores pensar coletivamente e permite a troca de experiências que os faz crescerem conjuntamente.</p>
+            <h3>Aculturamento:</h3> <p> os empresários com perfil associativista têm ganhos significativos no que se refere à cultura empreendedora.</p>
           </div>
           <img src={require('../img/associacao.jpg')} alt="" />
         </div>

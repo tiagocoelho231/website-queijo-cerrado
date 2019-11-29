@@ -20,9 +20,6 @@ export default class Footer extends Component {
             <li><NavLink exact to="/contato">Contato</NavLink></li>
           </ul>
         </div>
-        <div className="credit">
-          <p>Desenvolvido por alunos de Sistemas de Informação e Publicidade e Propaganda do Unipam</p>
-        </div>
       </footer>
     )
   }
